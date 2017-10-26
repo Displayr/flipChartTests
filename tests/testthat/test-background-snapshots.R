@@ -16,8 +16,12 @@ dat1 <- matrix(c(1:20), 10, 2, dimnames=list(letters[1:10], c("X", "Y")))
 
 test_that("Fake successful test",
 {
-    pdf("test_plot.pdf")
+    pdf("snapshots/accepted/test_plot.pdf")
     expect_error(plot(1:10), NA)
+    dev.off()
+    
+    pdf("snapshots/diff/test_plot.pdf")
+    expect_error(plot(1:10 + 10), NA)
     dev.off()
 })
 

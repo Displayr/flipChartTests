@@ -37,9 +37,11 @@ deploy:
   provider: releases
   api_key:
     secure: YDyOuqESuOFAZugXF+pdyc1qvvQonf3QKA9hqco7U4rjvrfqXKF+OnKh3phYLW1W/clj5TBWOqj0eL1LnMjuD4ozHTSeHcKDJohRoqRUxssak3vqJLWJzZi4ecqYISVbFW2wBGpBMAfl1jd3v5nFkfL51Qrgefayp56EmVrGs+QSNL04KCwd343Npt9f8LV044qhzgFX/dMaNKzI1bqKpQ6yg5xMYBEP9H98ro0iwkLdbdi36HUA9w28OlNFdLBKbd9RNW2KXEBaGa6w3Fch6b3ERRk7v7E1XkxHvAuUigPzxJtXHg93E4Qo2he+XSM/+mF4gB34OhOtYYqHjeYNU83kv0xHm25U1rFxkdb+nm2eDW6yAXT+b5QktV3vzc7a+6M1SsyeaQpzN1+ZNZsuCD2lGl/9NkpDTiyAQukb15+kpsjCMCNYypTeFlNfIYo1x5kqg2bRZL/OGTyly4m4GwGpbyYKVD521gvgGLysbI5t2vHeFDGAbTm7noihh1+n5V95bKwWcEghTyw4t1lbKktEHz/RyuzP0o0l5GTtciKOwAannpr/b+n3oIbKRlyG7KXDiNL/UVLCjmJm3OO7NM04FuX1eQyVS911HQ6EhRz0U6wZaJcpdv7ngxLY2zOHN7pu30vOrgwWxW8Vyjiu9Xt8r+YTr4cY8BAXdOS5KXc=
-  file: tests/testthat/accepted-snapshots/*
+  local_dir: tests/testthat/accepted-snapshots
   on:
     repo: Displayr/flipChartTests
+  skip_cleanup: true
+
 
 #notifications:
 #  slack:
