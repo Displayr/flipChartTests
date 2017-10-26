@@ -13,9 +13,9 @@ test.args <- c('default' = '',
 
 dat1 <- matrix(c(1:20), 10, 2, dimnames=list(letters[1:10], c("X", "Y")))
 
-for (ff in funcs)
+for (ff in funcs[1])
 {
-    for (i in 1:length(test.args))
+    for (i in 1:length(test.args[1]))
     {
         # filestem is both the name of the image in accepted-snapshots
         # and the error msg expected on the output of devtools::test()
@@ -28,8 +28,10 @@ for (ff in funcs)
             if (filestem == "scatter-legendpos")
                 extra.args <- ", scatter.colors.column=2, scatter.colors.as.categorical=T"
             cmd <- paste0("pp <- ", ff, "(dat1, ", test.args[i], extra.args, ")")
+            cat(cmd, "\n")
 
             expect_error(eval(parse(text=cmd)), NA)
+
             acceptedfile <- paste0("accepted-snapshots/", filestem, ".png")
             difffile <- paste0(filestem, "-diff.png")
 
