@@ -8,8 +8,6 @@ warnings_are_errors: false
 
 env:
   global:
-  - USER="chschan"
-  - REPO="github.com/Displayr/flipChartTests"
   - secure: NcVQvyHnASlssXLU0vuKfsnmlt9edlnOHd7tFUUGLDNtx5qikqewnIN0YCnzobFAF3BZbDT9Zql/9x0U2AIxsFZ6ArNyebrSvrOZAJ7/rkyCWjaVwGwVCHEuhgyJ2lcME1HZKChNcA4Kc4P9/qgUwn1tdQnb2xm9+0nIW2qivE4V7i5MSDSgM1uKI1sQu7sfTMVD3Dtgtc3PzaDXhfOiRR+tKLInHHlDd2OVL928yl8GBdgso0ObSKaPuT0RH7DnJkfjtrRBl/LPkyz/oIs2k71TvgkybBV9pSLmQjUK/snW9LYqXxwN6LAvujb+lCl4YmoX+Z5Y2sE/AIzuvRTMuvE4WmTMT5kmWlmGd0ryLgqV3bcUuDQnj4TmQNffBSEQkdGJK/gbsaaDvyO8OdC0E8bkcwseu8485tVxszcL5yUCFVQDaP+iI/mkkHO2h3JGUvW2MN1WUvgzGSUcnGdshVcBf2alorLU0P7uzx52va+WxYoJA003njiJYHY9IDVuVUIKo2sWTEC5UIVQ8T2YGrCUB1NTAQFheFFVkzTSO2uCAzBfyqYyc+412grPITUOntTJoH7OjSF3gb5Zoe+Rm1kn5QrUdb9+O0kGkHNIvmcg+tX6VlUSN7s9n2QNzFM77CGFnfXEYsdgTUBzmrNaTQCZihAHN2xIdF57GjH0qOI=
 
 # install debian libraries to match R-servers
@@ -38,13 +36,11 @@ script:
   - if [ -d tests/testthat ]; then
     Rscript --default-packages='datasets,utils,grDevices,graphics,stats,methods' -e "$rcode";
     fi
+  - git config github.user chschan
+  - git config github.token ${SECURE_TOKEN}
   - git add tests/testthat/snapshots/*/*.pdf
   - git commit -m "Snapshots added from Travis build $TRAVIS_BUILD_NUMBER [ci skip]"
-  - git push "https://${SECURE_TOKEN}@${REPO}" master
-
-env:
-  global:
-    secure: YDyOuqESuOFAZugXF+pdyc1qvvQonf3QKA9hqco7U4rjvrfqXKF+OnKh3phYLW1W/clj5TBWOqj0eL1LnMjuD4ozHTSeHcKDJohRoqRUxssak3vqJLWJzZi4ecqYISVbFW2wBGpBMAfl1jd3v5nFkfL51Qrgefayp56EmVrGs+QSNL04KCwd343Npt9f8LV044qhzgFX/dMaNKzI1bqKpQ6yg5xMYBEP9H98ro0iwkLdbdi36HUA9w28OlNFdLBKbd9RNW2KXEBaGa6w3Fch6b3ERRk7v7E1XkxHvAuUigPzxJtXHg93E4Qo2he+XSM/+mF4gB34OhOtYYqHjeYNU83kv0xHm25U1rFxkdb+nm2eDW6yAXT+b5QktV3vzc7a+6M1SsyeaQpzN1+ZNZsuCD2lGl/9NkpDTiyAQukb15+kpsjCMCNYypTeFlNfIYo1x5kqg2bRZL/OGTyly4m4GwGpbyYKVD521gvgGLysbI5t2vHeFDGAbTm7noihh1+n5V95bKwWcEghTyw4t1lbKktEHz/RyuzP0o0l5GTtciKOwAannpr/b+n3oIbKRlyG7KXDiNL/UVLCjmJm3OO7NM04FuX1eQyVS911HQ6EhRz0U6wZaJcpdv7ngxLY2zOHN7pu30vOrgwWxW8Vyjiu9Xt8r+YTr4cY8BAXdOS5KXc=
+  - git push origin master
 
 #notifications:
 #  slack:
