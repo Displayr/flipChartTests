@@ -8,11 +8,14 @@ Description: This package contains no code. It only used for testing.
 License: GPL-3
 Depends: R (>= 2.10)
 LazyData: TRUE
+Imports: htmlwidgets,
+         webshot
 Remotes:
-    MangoTheCat/visualTest
+    MangoTheCat/visualTest,
+    Displayr/flipStandardCharts
 Suggests:
     testthat,
-    webshot,
     plotly,
-    visualTest
+    visualTest,
+    flipStandardCharts
 RoxygenNote: 6.0.1

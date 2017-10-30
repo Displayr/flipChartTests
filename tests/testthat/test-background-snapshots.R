@@ -1,4 +1,5 @@
 context("Background snapshots")
+library("flipStandardCharts")
     
     # Add named entries to test.args to add more snapshot tests
 funcs <- c("Column", "Bar", "Area", "Line", "Scatter", "Radar")
@@ -13,22 +14,9 @@ test.args <- c('default' = '',
 
 dat1 <- matrix(c(1:20), 10, 2, dimnames=list(letters[1:10], c("X", "Y")))
 
-test_that("Fake successful test",
+for (ff in funcs)
 {
-    pdf("snapshots/accepted/test_plot.pdf")
-    expect_error(plot(1:10), NA)
-    dev.off()
-    
-    pdf("snapshots/diff/test_plot.pdf")
-    expect_error(plot(1:10 + 10), NA)
-    dev.off()
-})
-
-
-#for (ff in funcs[1])
-if (0)
-{
-    for (i in 1:length(test.args[1]))
+    for (i in 1:length(test.args))
     {
         # filestem is both the name of the image in accepted-snapshots
         # and the error msg expected on the output of devtools::test()
@@ -41,20 +29,18 @@ if (0)
             if (filestem == "scatter-legendpos")
                 extra.args <- ", scatter.colors.column=2, scatter.colors.as.categorical=T"
             cmd <- paste0("pp <- ", ff, "(dat1, ", test.args[i], extra.args, ")")
-            cat(cmd, "\n")
-
             expect_error(eval(parse(text=cmd)), NA)
 
-            acceptedfile <- paste0("accepted-snapshots/", filestem, ".png")
-            difffile <- paste0(filestem, "-diff.png")
+            acceptedfile <- paste0("snapshots/accepted/", filestem, ".png")
+            difffile <- paste0("snapshots/diff/", filestem, ".png")
 
             # If accepted snapshot does not exist, create snapshot in accepted-snapshots
             if (!file.exists(acceptedfile))
-                plotly::export(pp$plotly.plot, file=acceptedfile)
+                CreateSnapshot(pp, file=acceptedfile)
             else
             {
                 # Create new snapshot
-                plotly::export(pp$plotly.plot, file=difffile)
+                CreateSnapshot(pp, file=difffile)
                 res <- expect_equal(visualTest::isSimilar(file = difffile,
                               fingerprint = acceptedfile,
                               threshold = 0.1), TRUE)
