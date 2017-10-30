@@ -38,14 +38,12 @@ script:
   - if [ -d tests/testthat ]; then
     Rscript --default-packages='datasets,utils,grDevices,graphics,stats,methods' -e "$rcode";
     fi
-  - if [[ $(git status -s tests/testthat) ]]; then
-    git config user.name travisCISnapshots;
+  - git config user.name travisCISnapshots;
     git remote set-url origin "https://$WTOKEN@github.com/Displayr/flipChartTests.git";
     git add tests/testthat/snapshots;
     git commit -m "Snapshots added from Travis build $TRAVIS_BUILD_NUMBER [ci skip]";
     git checkout -b temp
     git branch -f master temp
-    git branch -d temp
     git push origin master;
     fi
 

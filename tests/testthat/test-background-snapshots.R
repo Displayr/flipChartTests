@@ -1,7 +1,6 @@
 context("Background snapshots")
-library(flipStandardCharts)
-
-# Add named entries to test.args to add more snapshot tests
+    
+    # Add named entries to test.args to add more snapshot tests
 funcs <- c("Column", "Bar", "Area", "Line", "Scatter", "Radar")
 test.args <- c('default' = '',
     'backgroundcolors' = 'background.fill.color="grey", charting.area.fill.color="yellow", charting.area.fill.opacity=0.2',
