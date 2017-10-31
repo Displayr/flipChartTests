@@ -2,22 +2,22 @@
 [![Coverage Status](https://coveralls.io/repos/github/Displayr/flipChartTests/badge.svg?branch=master)](https://coveralls.io/github/Displayr/flipChartTests?branch=master)
 # flipChartTests
 
-This package contains only unit tests for flipStandardChart and flipChart.
-Test outputs are machine-specific, so it is recommended that you use 
-the image files included inside the repository rather than local versions.
+This package contains only unit tests for flipStandardChart and flipChart. Test outputs are machine-specific, so it is recommended that you use the image files included inside the repository rather than local versions.
 
-Outputs of tests run in Travis CI can be found inside 
-[tests/testthat/snapshots](tests/testthat/snapshots). Diffing files are in the **[diff](tests/testthat/snapshots/diff)** directory and should be compared against files of the same name that are in the **[accepted](tests/testthat/snapshots/accepted)** directory.
+### Checking for snapshot diffs
+Tests are run automatically in TravisCI, after a push to flipChartTests, flipChart, flipStandardCharts or other upstream dependencies. Snapshots will be found in [tests/testthat/snapshots](tests/testthat/snapshots). Diffing files are in the **[diff](tests/testthat/snapshots/diff)** directory and should be compared against files of the same name that are in the **[accepted](tests/testthat/snapshots/accepted)** directory.
 
-Tests can be added to the R files in the [testthat](tests/testthat) directory.
-The user may want to view local copies of them before committing the change, but
-the test outputs (i.e. PNG files) should not be commited.
-
+### Creating new tests
+Tests can be added to the R files in the [testthat](tests/testthat) directory. Convenience functions have been provided in flipChartTests so the tests can be created, for example
+```
+pp <- plot_ly(x = 1:10, y = 1:10, trace = "scatter")
+cmp <- CompareSnapshot(pp, 'snapshots/diff/test1.png', 'snapshots/accepted/test1.png')
+res <- expect_equal(cmp, TRUE)
+```
+Only the test file (e.g. tests/testthat/test-background.R) should be committed, not the test outputs (PNG files).
 
 ## Running tests locally
-Unit tests involve converting the htmlwidget to a htmlfile and then
-taking a snapshot using `webtools` to create PNG files.
-The packages required for running visual tests can be set up by:
+The packages required for running tests can be set up by:
 ```
 install.packages("devtools")
 install.packages("testthat")
@@ -27,9 +27,10 @@ install.packages("webshot")
 webshot::install_phantomjs()
 install_github("Displayr/flipChartTests")
 ```
+The first time they are run locally, you may need to delete all files inside [tests/testthat/snapshots/accepted](tests/testthat/snapshots/accepted) before running.
 
 To accept new test outputs, simply delete the existing test output inside [tests/testthat/snapshots/accepted](tests/testthat/snapshots/accepted) and the new outputs will saved in that directory next time the tests are run using `devtools::test()`
 
-Note that running `devtools::check()` will give the same error messages as `devtools::test()` but will not generate output PNG files.
+Note that you should use `devtools::test()` rather than `devtools::check()` as `check()` will give the same errors and warning but will not generate output PNG files in the repository.
 
 [![Displayr logo](https://mwmclean.github.io/img/logo-header.png)](https://www.displayr.com)

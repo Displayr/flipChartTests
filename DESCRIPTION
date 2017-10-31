@@ -9,13 +9,15 @@ License: GPL-3
 Depends: R (>= 2.10)
 LazyData: TRUE
 Imports: htmlwidgets,
-         webshot
+         webshot,
+         visualTest,
 Remotes:
     MangoTheCat/visualTest,
-    Displayr/flipStandardCharts
+    Displayr/flipStandardCharts,
+    Displayr/flipChart
 Suggests:
     testthat,
     plotly,
-    visualTest,
-    flipStandardCharts
+    flipStandardCharts,
+    flipChart
 RoxygenNote: 6.0.1
