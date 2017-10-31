@@ -40,7 +40,7 @@ script:
   - git checkout -b temp
   - git branch -f master temp
   - git status
-  - git push -f
+  - git push --set-upstream origin master
 
 notifications:
   slack:
