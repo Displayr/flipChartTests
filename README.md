@@ -12,9 +12,7 @@ Tests can be added to the R files in the [testthat](tests/testthat) directory. C
 ```
 pp <- plot_ly(x = 1:10, y = 1:10, trace = "scatter")
 cmp <- CompareSnapshot(pp, 'snapshots/diff/test1.png', 'snapshots/accepted/test1.png')
-res <- expect_equal(cmp, TRUE)
-if (res)
-    unlink('snapshots/diff/test1.png')
+expect_equal(cmp, TRUE)
 ```
 Only the test file (e.g. tests/testthat/test-background.R) should be committed, not the test outputs (PNG files).
 

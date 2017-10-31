@@ -36,10 +36,6 @@ for (ff in funcs)
             
             cmp <- CompareSnapshot(pp, difffile, acceptedfile)
             res <- expect_equal(cmp, TRUE)
-            
-            # If test fails, leave snapshot for visual inspection
-            if (res)
-                unlink(difffile)
         })
     }
 }
