@@ -24,31 +24,22 @@ for (ff in funcs)
         if (filestem %in% c("radar-reversed", "radar-grid"))
             next
         test_that(filestem, {
-
             extra.args <- ""
             if (filestem == "scatter-legendpos")
                 extra.args <- ", scatter.colors.column=2, scatter.colors.as.categorical=T"
             cmd <- paste0("pp <- ", ff, "(dat1, ", test.args[i], extra.args, ")")
             expect_error(eval(parse(text=cmd)), NA)
 
+            # file names are relative to the testthat directory
             acceptedfile <- paste0("snapshots/accepted/", filestem, ".png")
             difffile <- paste0("snapshots/diff/", filestem, ".png")
-
-            # If accepted snapshot does not exist, create snapshot in accepted-snapshots
-            if (!file.exists(acceptedfile))
-                CreateSnapshot(pp, file=acceptedfile)
-            else
-            {
-                # Create new snapshot
-                CreateSnapshot(pp, file=difffile)
-                res <- expect_equal(visualTest::isSimilar(file = difffile,
-                              fingerprint = acceptedfile,
-                              threshold = 0.1), TRUE)
-
-                # If test fails, leave diff for visual inspection
-                if (res)
-                    unlink(difffile)
-            }
+            
+            cmp <- CompareSnapshot(pp, difffile, acceptedfile)
+            res <- expect_equal(cmp, TRUE)
+            
+            # If test fails, leave snapshot for visual inspection
+            if (res)
+                unlink(difffile)
         })
     }
 }
