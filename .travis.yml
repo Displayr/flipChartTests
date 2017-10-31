@@ -35,23 +35,23 @@ script:
   - git config user.name travisCISnapshots;
   - git remote set-url origin "https://$WTOKEN@github.com/Displayr/flipChartTests.git";
   - git add tests/testthat/snapshots;
-  - git commit -m "Snapshots added from Travis build $TRAVIS_BUILD_NUMBER [ci skip]";
+  - if [[ $git status -s tests/testhat/snapshots) ]]; then git commit -m "Snapshots added from Travis build $TRAVIS_BUILD_NUMBER [ci skip]"; fi
   - git checkout -b temp;
   - git branch -f master temp;
   - git push origin master;
 
-#notifications:
-#  slack:
-#    rooms:
-#      - displayr:FTgSTNHC2rpanhJMGTKMwZXM#github-notifications
-#    template:
-#      - "Build <%{build_url}|#%{build_number}> %{result} in %{repository_name}@%{branch} by %{author}: <%{compare_url}|%{commit_message}>"
-#    on_success: change
-#    on_failure: always
+notifications:
+  slack:
+    rooms:
+      - displayr:FTgSTNHC2rpanhJMGTKMwZXM#github-notifications
+    template:
+      - "Build <%{build_url}|#%{build_number}> %{result} in %{repository_name}@%{branch} by %{author}: <%{compare_url}|%{commit_message}>"
+    on_success: change
+    on_failure: always
 
 # Warning notifications and downstream package builds are implemented
 # by calling R functions so they can be updated in this package without
 # committing a new change to .travis.yml in each repository
-#after_success:
-#  - Rscript -e "require(flipDevTools); NotifyWarnings(); TriggerDownstreamBuilds()"
-#  - travis_wait Rscript -e "flipDevTools::CheckCoverage()"
+after_success:
+  - Rscript -e "require(flipDevTools); NotifyWarnings(); TriggerDownstreamBuilds()"
+  - travis_wait Rscript -e "flipDevTools::CheckCoverage()"

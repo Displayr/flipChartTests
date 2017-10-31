@@ -9,8 +9,8 @@ the image files included inside the repository rather than local versions.
 Outputs of tests run in Travis CI can be found inside 
 [tests/testthat/snapshots](tests/testthat/snapshots). Diffing files are in the **[diff](tests/testthat/snapshots/diff)** directory and should be compared against files of the same name that are in the **[accepted](tests/testthat/snapshots/accepted)** directory.
 
-Tests can be added to the R files in the [testthat](tests/testthat) and the
-user may want to view local copies of them before committing the change, but
+Tests can be added to the R files in the [testthat](tests/testthat) directory.
+The user may want to view local copies of them before committing the change, but
 the test outputs (i.e. PNG files) should not be commited.
 
 
