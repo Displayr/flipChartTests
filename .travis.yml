@@ -35,10 +35,10 @@ script:
     fi
   - git config user.name travisCISnapshots
   - git remote set-url origin "https://$WTOKEN@github.com/Displayr/flipChartTests.git"
-  - git add tests/testthat/snapshots
-  - if [[ $(git status -s tests/testhat/snapshots) ]]; then git commit -m "Snapshots added from Travis build $TRAVIS_BUILD_NUMBER [ci skip]"; fi
   - git checkout -b temp
   - git branch -f master temp
+  - git add tests/testthat/snapshots
+  - if [[ $(git status -s tests/testhat/snapshots) ]]; then git commit -m "Snapshots added from Travis build $TRAVIS_BUILD_NUMBER [ci skip]"; fi
   - git status
   - git push --set-upstream origin master
 
