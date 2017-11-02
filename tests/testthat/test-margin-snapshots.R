@@ -2,7 +2,6 @@ context("Text in margins")
 library("flipChart")
 
 # labeledscatterplots font color is not showing and does not handle '<br>'
-# something strange happening with radar chart footer wrapping
 
 dat <- structure(c(0, 22, 18, 15, 16, 19, 13, 18, 27, 12, 0, 22, 21,
 18, 20, 16, 14, 22, 24, 10), .Dim = c(10L, 2L), statistic = "n", .Dimnames = list(
