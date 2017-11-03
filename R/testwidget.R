@@ -3,6 +3,7 @@
 #' A wrapper to use CompareSnapshot.
 #' Compares a widget against a reference snapshot, creating snapshot if
 #'  it differs from the reference or the reference does not exist.
+#' @param name Used to name the snapshot; does not include file suffix.
 #' @param diff.path Directory to place diff snapshot.
 #' @param accepted.path Directory to expect accepted snapshots to be.
 #'    If no snapshots are found here, new snapshots will be taken of the

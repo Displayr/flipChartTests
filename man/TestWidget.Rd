@@ -10,6 +10,8 @@ TestWidget(widget, name, delay = 0.2, threshold = 0.1,
 \arguments{
 \item{widget}{The htmlwidget to display.}
 
+\item{name}{Used to name the snapshot; does not include file suffix.}
+
 \item{delay}{Time to wait before taking screenshot, in seconds. Sometimes a longer delay is needed for all assets to display properly.}
 
 \item{threshold}{Similarity parameter for comparing screenshots.}
@@ -27,10 +29,10 @@ Return \code{FALSE} only if the snapshot of the widget differs from
  returned otherwise the snapshot will be saved as \code{accepted.file}.
 }
 \description{
-A wrapper for CompareSnapshot for convenience in testthat.
+A wrapper to use CompareSnapshot.
 Compares a widget against a reference snapshot, creating snapshot if
  it differs from the reference or the reference does not exist.
 }
 \seealso{
-\code{link{CompareSnapshot}}
+CompareSnapshot
 }
