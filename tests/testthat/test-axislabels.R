@@ -32,12 +32,10 @@ for (ff in funcs)
         filestem <- paste0(tolower(ff), "-", names(test.cases)[i])
         test_that(filestem, {
 
-            cmd <- paste0("pp <- CChart(\"", ff, "\", ", test.cases[i], ", warn.if.no.match = FALSE)")
+            cmd <- paste0("pp <- CChart(\"", ff, "\", ", test.cases[i], 
+                          ", warn.if.no.match = FALSE)")
             expect_error(eval(parse(text=cmd)), NA)
-
-            accepted.file <- paste0("snapshots/accepted/", filestem, ".png")
-            diff.file <- paste0("snapshots/diff/", filestem, ".png")
-            expect_equal(CompareSnapshot(pp, diff.file, accepted.file), TRUE)
+            expect_equal(TestWidget(pp, filestem), TRUE)
         })
     }
 }

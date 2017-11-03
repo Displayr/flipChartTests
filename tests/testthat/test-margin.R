@@ -3,6 +3,8 @@ library("flipChart")
 
 # labeledscatterplots font color is not showing and does not handle '<br>'
 
+# A simple dataset - here we are just checking the positioning 
+# of the margin text, not data processing
 dat <- structure(c(0, 22, 18, 15, 16, 19, 13, 18, 27, 12, 0, 22, 21,
 18, 20, 16, 14, 22, 24, 10), .Dim = c(10L, 2L), statistic = "n", .Dimnames = list(
     c("Less than 18", "18 to 24", "25 to 29", "30 to 34", "35 to 39",
@@ -10,6 +12,7 @@ dat <- structure(c(0, 22, 18, 15, 16, 19, 13, 18, 27, 12, 0, 22, 21,
     ), c("Male", "Female")), name = "Q3. Age by Q2. Gender", questions = c("Q3. Age",
 "Q2. Gender"))
 
+# Long text used for footer, for checking line wrap
 filler.text <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
 # Pie charts do not yet have title/subtitle/footers
@@ -26,13 +29,10 @@ for (ff in funcs)
         filestem <- paste0(tolower(ff), "-", names(test.cases)[i])
         test_that(filestem, {
 
-            extra.args <- ""
-            cmd <- paste0("pp <- CChart(\"", ff, "\", ", test.cases[i], extra.args, ")")
+            cmd <- paste0("pp <- CChart(\"", ff, "\", ", test.cases[i], 
+                          ", warn.if.no.match = FALSE)")
             expect_error(eval(parse(text=cmd)), NA)
-
-            accepted.file <- paste0("snapshots/accepted/", filestem, ".png")
-            diff.file <- paste0("snapshots/diff/", filestem, ".png")
-            expect_equal(CompareSnapshot(pp, diff.file, accepted.file), TRUE)
+            expect_equal(TestWidget(pp, filestem), TRUE)
         })
     }
 }

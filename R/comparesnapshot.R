@@ -13,6 +13,7 @@
 #' @param threshold Similarity parameter for comparing screenshots.
 #' @param strict Whether to give warning if \code{accepted.file} does not exist.
 #' @importFrom visualTest isSimilar
+#' @export
 CompareSnapshot <- function(widget, 
                             diff.file,
                             accepted.file,

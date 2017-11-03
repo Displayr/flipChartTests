@@ -1,8 +1,10 @@
 context("Background snapshots")
 library("flipStandardCharts")
     
-    # Add named entries to test.args to add more snapshot tests
 funcs <- c("Column", "Bar", "Area", "Line", "Scatter", "Radar")
+
+# Add named entries to test.args to add more snapshot tests
+# Here we are checcking the behaviour of the chart background and axis
 test.args <- c('default' = '',
     'backgroundcolors' = 'background.fill.color="grey", charting.area.fill.color="yellow", charting.area.fill.opacity=0.2',
     'grid' = 'x.line.width=2, y.line.width=4, y.line.color="red", x.line.color="blue", y.tick.mark.length=10, x.tick.mark.length=1, x.grid.width=1, y.grid.width=1',
@@ -29,13 +31,7 @@ for (ff in funcs)
                 extra.args <- ", scatter.colors.column=2, scatter.colors.as.categorical=T"
             cmd <- paste0("pp <- ", ff, "(dat1, ", test.args[i], extra.args, ")")
             expect_error(eval(parse(text=cmd)), NA)
-
-            # file names are relative to the testthat directory
-            acceptedfile <- paste0("snapshots/accepted/", filestem, ".png")
-            difffile <- paste0("snapshots/diff/", filestem, ".png")
-            
-            cmp <- CompareSnapshot(pp, difffile, acceptedfile)
-            res <- expect_equal(cmp, TRUE)
+            expect_equal(TestWidget(pp, filestem), TRUE)
         })
     }
 }
