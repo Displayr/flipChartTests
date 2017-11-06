@@ -21,8 +21,12 @@ for (func in charting.funcs)
     for (dat in dat.list)
     {
         # Create name which will appear in the error message if test fails
-        filestem <- paste0(tolower(func), "-", dat)
-        if (filestem == "radar-random")
+        # Filestem should be prefixed by test file name to avoid name conflicts
+        filestem <- paste0("basicexample-", tolower(func), "-", dat)
+        
+        # Skip iteration if test is function call is expected to give error
+        # Note this was modified from an expect_error call inside test_that
+        if (filestem == "basicexample-radar-random")
             next
         
         test_that(filestem, {
@@ -32,15 +36,17 @@ for (func in charting.funcs)
 
             # Run command and check outputs
             # First, isolate specific cases which behave differently
-            if (filestem == "pie-random")
+            # For this example pie charts do not show negative values
+            if (filestem == "basicexample-pie-random")
                 expect_warning(eval(parse(text=cmd)))
 
             # General case for all other combinations
             else
                 expect_error(eval(parse(text=cmd)), NA)
             
-            # Create snapshot and compare 
-            expect_equal(TestWidget(pp, filestem), TRUE)
+            # Create snapshot and compare against reference (in flipChartTests)
+            # If none exists, the snapshot will be set accepted as the reference
+            expect_true(TestWidget(pp, filestem))
         })
     }
 }

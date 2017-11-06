@@ -29,13 +29,13 @@ for (ff in funcs)
 {
     for (i in 1:length(test.cases))
     {
-        filestem <- paste0(tolower(ff), "-", names(test.cases)[i])
+        filestem <- paste0("axislabels-", tolower(ff), "-", names(test.cases)[i])
         test_that(filestem, {
 
             cmd <- paste0("pp <- CChart(\"", ff, "\", ", test.cases[i], 
                           ", warn.if.no.match = FALSE)")
             expect_error(eval(parse(text=cmd)), NA)
-            expect_equal(TestWidget(pp, filestem), TRUE)
+            expect_true(TestWidget(pp, filestem))
         })
     }
 }

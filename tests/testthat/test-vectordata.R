@@ -36,7 +36,7 @@ for (func in charting.funcs)
         for (ii in 1:length(opts))
         {
             # Create name which will appear in the error message if test fails
-            filestem <- paste0(tolower(func), "-", dat, "-", names(opts)[ii])
+            filestem <- paste0("vectordata-", tolower(func), "-", dat, "-", names(opts)[ii])
             if (grepl("labeledscatter-.*(datalabel|fit)", filestem))
                 next
             else if (grepl("area-single", filestem))
@@ -58,7 +58,7 @@ for (func in charting.funcs)
                     expect_error(eval(parse(text=cmd)), NA)
                 
                 # Create snapshot
-                expect_equal(TestWidget(pp, filestem), TRUE)
+                expect_true(TestWidget(pp, filestem))
             })
         }
     }

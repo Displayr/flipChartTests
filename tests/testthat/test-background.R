@@ -22,16 +22,16 @@ for (ff in funcs)
     {
         # filestem is both the name of the image in accepted-snapshots
         # and the error msg expected on the output of devtools::test()
-        filestem <- paste0(tolower(ff), "-", names(test.args)[i])
-        if (filestem %in% c("radar-reversed", "radar-grid"))
+        filestem <- paste0("background-", tolower(ff), "-", names(test.args)[i])
+        if (filestem %in% c("background-radar-reversed", "background-radar-grid"))
             next
         test_that(filestem, {
             extra.args <- ""
-            if (filestem == "scatter-legendpos")
+            if (filestem == "background-scatter-legendpos")
                 extra.args <- ", scatter.colors.column=2, scatter.colors.as.categorical=T"
             cmd <- paste0("pp <- ", ff, "(dat1, ", test.args[i], extra.args, ")")
             expect_error(eval(parse(text=cmd)), NA)
-            expect_equal(TestWidget(pp, filestem), TRUE)
+            expect_true(TestWidget(pp, filestem))
         })
     }
 }
