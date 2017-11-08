@@ -1,7 +1,7 @@
 context("Background snapshots")
 library("flipStandardCharts")
     
-funcs <- c("Column", "Bar", "Area", "Line", "Scatter", "Radar")
+funcs <- c("Column", "Bar", "Area", "Line")
 
 # Add named entries to test.args to add more snapshot tests
 # Here we are checcking the behaviour of the chart background and axis
