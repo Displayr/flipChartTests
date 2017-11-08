@@ -14,7 +14,7 @@
 TestWidget <- function(widget, 
                        name,
                        delay = 0.2,
-                       threshold = 0.1,
+                       threshold = 0.001,
                        diff.path = "snapshots/diff",
                        accepted.path = "snapshots/accepted")
 {
