@@ -50,7 +50,7 @@ for (dat in dat.list)
             # Lots of warning about colors because of the wrong lengths
             # so ignore all
             expect_error(suppressWarnings(eval(parse(text=cmd))), NA)
-            expect_true(TestWidget(pp, filestem))    
+            expect_true(TestWidget(pp, filestem, threshold = 0.1))    
         })
     }
 }

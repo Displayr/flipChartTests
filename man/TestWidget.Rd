@@ -4,7 +4,7 @@
 \alias{TestWidget}
 \title{TestWidget}
 \usage{
-TestWidget(widget, name, delay = 0.2, threshold = 0.1,
+TestWidget(widget, name, delay = 0.2, threshold = 0.001,
   diff.path = "snapshots/diff", accepted.path = "snapshots/accepted")
 }
 \arguments{
