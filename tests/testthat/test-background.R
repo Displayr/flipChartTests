@@ -35,7 +35,7 @@ dates <- matrix(c(1:20), 10, 2,
 # corresponding data sets for scatterplot
 sc.positives <- 1:10 + 5
 sc.negatives <- 1:10 - 20
-sc.categoricals <- data.frame(Class=factor(sample(LETTERS[1:3], 10, replace = TRUE)), Y=1:10)
+sc.categoricals <- data.frame(Class=factor(c('B','B','A','A','A','A','B','C','B','C')), Y=1:10)
 sc.dates <- data.frame(Date=as.Date("2017-01-01") + c(0:4, 15:19), Y=1:10)
 
 dat.list <- c("positives", "negatives", "categoricals", "dates")
