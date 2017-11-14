@@ -7,7 +7,7 @@ names(xx) <- LETTERS[1:20]
 
 for (func in c("Column", "Bar", "Distribution"))
 {
-    filestem <- paste0("cchart", func, "axistitle")
+    filestem <- paste("cchart", tolower(func), "axistitle", sep="-")
     test_that(filestem, {
         expect_error(pp <- suppressWarnings(CChart("Column", xx, categories.title = "Categories", 
                                   values.title = "Values")), NA)
