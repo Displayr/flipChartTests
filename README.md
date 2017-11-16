@@ -11,8 +11,7 @@ Tests are run automatically in TravisCI, after a push to flipChartTests, flipCha
 Tests can be added to the R files in the [testthat](tests/testthat) directory. Convenience functions have been provided in flipChartTests so the tests can be created easily. For example,
 ```
 pp <- plot_ly(x = 1:10, y = 1:10, trace = "scatter")
-cmp <- CompareSnapshot(pp, 'snapshots/diff/test1.png', 'snapshots/accepted/test1.png')
-expect_equal(cmp, TRUE)
+expect_true(TestWidget(pp, "test1"))
 ```
 Only the test file (e.g. tests/testthat/test-background.R) should be committed, not the test outputs (PNG files).
 
