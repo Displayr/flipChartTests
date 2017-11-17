@@ -29,7 +29,7 @@ script:
   - rm -f tests/testthat/snapshots/diff/*.png
   - R CMD build --no-manual --no-build-vignettes --no-resave-data .
   - R CMD check --as-cran --no-manual --no-build-vignettes --no-tests *.tar.gz
-  # Not needed: Rscript -e 'install.packages("webshot"); webshot::install_phantomjs()'
+  - Rscript -e 'install.packages("webshot"); webshot::install_phantomjs()'
   - if [ -d tests/testthat ]; then
     Rscript --default-packages='datasets,utils,grDevices,graphics,stats,methods' -e "$rcode";
     fi
