@@ -9,9 +9,9 @@ positives <- abs(random)
 
 # Create lists of all charting functions, and data types and options to use
 # Functions excluded: Waterfall, Venn, Stream, HeatMap
-charting.funcs <- c("Column", "Bar", "Area", "Line", "Pie", "Radar",
+charting.funcs <- c("Column", "Bar", "Area", "Line", "Radar",
                     "Scatter", "LabeledScatter", "Box", "Bean", "Distribution",
-                    "Density", "Violin")
+                    "Density", "Violin")  # removed 'Pie' because of random diffs
 dat.list <- c("random", "positives")
 
 # Iterate through all combinations of charting functions and data types
