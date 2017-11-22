@@ -19,14 +19,14 @@ dat.list <- c("unnamed", "named", "missing1","single", "double", "matrix2d")
 
 opts <- c('default' = '',
           'datalabel' = 'data.label.show=TRUE, data.label.font.color="red", data.label.font.family="Courier"',
-          'backgroundcolors' = 'background.fill.color="grey", charting.area.fill.color="yellow", charting.area.fill.opacity=0.2',
+          'backgroundcolors' = 'background.fill.color="grey", background.fill.opacity=1, charting.area.fill.color="yellow", charting.area.fill.opacity=0.2',
           'grid' = 'x.grid.width=4, y.grid.width=1, y.tick.distance = 2, y.tick.font.size=8, y.tick.font.color="green"',
           'nogrid' = 'grid.show=FALSE, legend.show=FALSE, x.grid.width=1, y.grid.width=1',
           'ygrid' = 'y.grid.width = 0, data.label.show=TRUE, y.bounds.maximum = 5, x.tick.font.family="Arial Black", x.tick.font.size=16',
           
           'legendpos' = 'legend.position.y=0.5, legend.position.x=0, legend.font.color="red"',
           'legendbg' = 'legend.fill.color="blue", legend.fill.opacity=0.5, legend.border.color="red", legend.border.line.width=2',
-          'margins' = 'margin.left=0, margin.right=0, margin.top=0, margin.inner.pad=10, charting.area.fill.color="red", legend.show=FALSE, grid.show=FALSE',
+          'margins' = 'margin.left=0, margin.right=0, margin.top=0, margin.inner.pad=10, charting.area.fill.color="red", charting.area.fill.opacity=1, legend.show=FALSE, grid.show=FALSE',
           'font' = 'global.font.family="Courier", global.font.color="red"',
           'nooutline' = 'series.line.width=0, x.tick.font.color="green"',
           'opacity' = 'opacity = 0.9',
