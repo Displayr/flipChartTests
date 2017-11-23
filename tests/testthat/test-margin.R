@@ -5,12 +5,12 @@ library("flipChart")
 
 # A simple dataset - here we are just checking the positioning 
 # of the margin text, not data processing
-dat <- structure(c(0, 22, 18, 15, 16, 19, 13, 18, 27, 12, 0, 22, 21,
+dat <- t(structure(c(0, 22, 18, 15, 16, 19, 13, 18, 27, 12, 0, 22, 21,
 18, 20, 16, 14, 22, 24, 10), .Dim = c(10L, 2L), statistic = "n", .Dimnames = list(
     c("Less than 18", "18 to 24", "25 to 29", "30 to 34", "35 to 39",
     "40 to 44", "45 to 49", "50 to 54", "55 to 64", "65 or more"
     ), c("Male", "Female")), name = "Q3. Age by Q2. Gender", questions = c("Q3. Age",
-"Q2. Gender"))
+"Q2. Gender")))
 
 # Long text used for footer, for checking line wrap
 filler.text <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
@@ -31,7 +31,7 @@ for (ff in funcs)
 
             cmd <- paste0("pp <- CChart(\"", ff, "\", ", test.cases[i], 
                           ", warn.if.no.match = FALSE)")
-            expect_error(eval(parse(text=cmd)), NA)
+            expect_error(suppressWarnings(eval(parse(text=cmd))), NA)
             expect_true(TestWidget(pp, filestem))
         })
     }
