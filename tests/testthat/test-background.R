@@ -26,11 +26,11 @@ test.args <- c('default' = '',
     'modebar' = 'modebar.show = TRUE')
 
 # data set for each axis type
-positives <- t(matrix(c(1:20), 10, 2, dimnames=list(1:10 + 5, c("X", "Y"))))
-negatives <- t(matrix(c(1:20), 10, 2, dimnames=list(1:10 - 20, c("X", "Y"))))
-categoricals <- t(matrix(c(1:20), 10, 2, dimnames=list(letters[1:10], c("X", "Y"))))
-dates <- t(matrix(c(1:20), 10, 2,
-                dimnames=list(sprintf("%02d/01/2017", c(1:5, 16:20)), c("X", "Y"))))
+positives <- matrix(c(1:20), 10, 2, dimnames=list(1:10 + 5, c("X", "Y")))
+negatives <- matrix(c(1:20), 10, 2, dimnames=list(1:10 - 20, c("X", "Y")))
+categoricals <- matrix(c(1:20), 10, 2, dimnames=list(letters[1:10], c("X", "Y")))
+dates <- matrix(c(1:20), 10, 2,
+                dimnames=list(sprintf("%02d/01/2017", c(1:5, 16:20)), c("X", "Y")))
 
 # corresponding data sets for scatterplot
 sc.positives <- 1:10 + 5

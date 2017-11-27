@@ -3,18 +3,18 @@ context("Stacked Charts")
 # data sets to check
 set.seed(122333)
 dat.list <- c("unnamed", "named", "gapped", "missing1", "missing13", "dated", "gapdated")
-unnamed <- t(matrix(rpois(60, 4), 20, 3)) # all positives
-named <- t(matrix(unnamed, 20, 3, dimnames = list(letters[1:20], LETTERS[1:3])))
-gapped <- t(matrix(unnamed, 20, 3, dimnames = list(c(1:10, 21:30), LETTERS[1:3])))
+unnamed <- matrix(rpois(60, 4), 20, 3) # all positives
+named <- matrix(unnamed, 20, 3, dimnames = list(letters[1:20], LETTERS[1:3]))
+gapped <- matrix(unnamed, 20, 3, dimnames = list(c(1:10, 21:30), LETTERS[1:3]))
 missing1 <- gapped
 missing1[1,1] <- NA
-colnames(missing1) <- 25:44
+rownames(missing1) <- 25:44
 missing13 <- missing1
-missing13[1,c(1,3)] <- NA
+missing13[c(1,3),1] <- NA
 dated <- gapped
-colnames(dated) <- sprintf("%02d/01/2017", 1:20)
+rownames(dated) <- sprintf("%02d/01/2017", 1:20)
 gapdated <- dated
-colnames(gapdated) <- sprintf("%02d/01/2017", c(1:10, 21:30))
+rownames(gapdated) <- sprintf("%02d/01/2017", c(1:10, 21:30))
 
 opts <- c('default' = '',
           'datalabels' = 'data.label.show = TRUE',
