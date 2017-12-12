@@ -1,5 +1,4 @@
 [![](https://travis-ci.org/Displayr/flipChartTests.svg?branch=master)](https://travis-ci.org/Displayr/flipChartTests/)
-[![Coverage Status](https://coveralls.io/repos/github/Displayr/flipChartTests/badge.svg?branch=master)](https://coveralls.io/github/Displayr/flipChartTests?branch=master)
 # flipChartTests
 
 This package contains only unit tests for flipStandardChart and flipChart. Test outputs are machine-specific, so it is recommended that you use the image files included inside the repository rather than local versions.
