@@ -11,7 +11,7 @@ warnings_are_errors: false
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libgdal-dev libproj-dev python-protobuf libprotoc-dev libprotobuf-dev libv8-dev librsvg2-dev
-  - rcode="res<-devtools::test(); "
+  - rcode="res<-devtools::test(reporter = SummaryReporter); "
   - rcode+="df <- as.data.frame(res); "
   - rcode+='pass <- sum(df$failed)==0 && all(!df$error); '
   - rcode+="write.csv(df, file='test_results.csv'); "
