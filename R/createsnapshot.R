@@ -10,7 +10,7 @@
 CreateSnapshot <- function(widget, filename, delay = 0.2)
 {
     if (inherits(widget, "StandardChart"))
-        widget <- widget$plotly.plot
+        widget <- widget$htmlwidget
     # Ensure that filename has 'png' suffix which is used by webshot
     if (!grepl(".png$", tolower(filename)))
         filename <- paste0(filename, ".png")
