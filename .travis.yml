@@ -33,7 +33,6 @@ script:
   - if [ -d tests/testthat ]; then
     Rscript --default-packages='datasets,utils,grDevices,graphics,stats,methods' -e "$rcode";
     fi
-
   # Prepare repository to push to github
   - git config user.name travisCISnapshots
   - git remote set-url origin "https://$WTOKEN@github.com/Displayr/flipChartTests.git"
@@ -43,6 +42,7 @@ script:
   - git checkout -b temp
   - git branch -f master temp
   - if [ 1 ]; then git push origin master; fi # never report error code
+
 notifications:
   slack:
     rooms:
