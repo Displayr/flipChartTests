@@ -30,8 +30,8 @@ r_github_packages:
 script:
   - R CMD build --no-manual --no-build-vignettes --no-resave-data .
   - R CMD check --as-cran --no-manual --no-build-vignettes --no-tests *.tar.gz
-  - travis_wait if [ -d tests/testthat ]; then
-    Rscript --default-packages='datasets,utils,grDevices,graphics,stats,methods' -e "$rcode";
+  - if [ -d tests/testthat ]; then
+    travis_wait Rscript --default-packages='datasets,utils,grDevices,graphics,stats,methods' -e "$rcode"
     fi
   # Prepare repository to push to github
   - git config user.name travisCISnapshots
