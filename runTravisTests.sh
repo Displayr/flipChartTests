@@ -7,6 +7,8 @@ if [ -d tests/testthat ]; then
     echo "cat(out, sep = '\n')" >> test.R
     echo "n.fail <- as.numeric(sub('Failed:[[:space:]]', '', out[grep('Failed:[[:space:]]', out)]))" >> test.R
     echo "write.csv(as.data.frame(res), file='test_results.csv')" >> test.R
-    echo "quit(status=n.fail, save='no')" >> test.R
-    Rscript --default-packages="datasets,utils,grDevices,graphics,stats,methods" test.R 
+    echo "quit(status = !identical(n.fail, 0), save='no')" >> test.R
+    Rscript --default-packages="datasets,utils,grDevices,graphics,stats,methods" test.R
+    exit $?
 fi
+exit 0
