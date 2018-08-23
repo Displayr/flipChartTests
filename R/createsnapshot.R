@@ -7,6 +7,7 @@
 #' @details Works with plotly and rhtmlLabeledScatter. Errors with rhtmlPictograph.
 #' @importFrom htmlwidgets saveWidget
 #' @importFrom webshot webshot
+#' @export
 CreateSnapshot <- function(widget, filename, delay = 0.2)
 {
     if (inherits(widget, "StandardChart"))

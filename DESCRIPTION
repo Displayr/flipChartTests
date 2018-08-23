@@ -20,4 +20,5 @@ Suggests:
     plotly,
     flipStandardCharts,
     flipChart
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
+Encoding: UTF-8
