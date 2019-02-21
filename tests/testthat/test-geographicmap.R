@@ -52,6 +52,7 @@ for (dat in dat.list)
             
             #print(pp)
             #readline(prompt=paste0(filestem, ": press [enter] to continue: "))
+            expect_true(TestWidget(pp, filestem, delay = 3))
         })
     }
 }
