@@ -28,5 +28,5 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, mouse.hover = TRUE)
     eval <- NULL
     if (mouse.hover)
         eval <- "this.mouse.click(opts.zoom*opts.width/2, opts.zoom*opts.vheight/2);"
-    webshot(tmp.html, file = filename, delay = delay, eval = eval)
+    webshot(tmp.html, file = filename, delay = delay, eval = eval, cliprect = "viewport")
 }
