@@ -4,7 +4,7 @@
 \alias{CreateSnapshot}
 \title{CreateSnapshot}
 \usage{
-CreateSnapshot(widget, filename, delay = 0.2)
+CreateSnapshot(widget, filename, delay = 0.2, mouse.hover = TRUE)
 }
 \arguments{
 \item{widget}{The htmlwidget to display.}
@@ -12,6 +12,8 @@ CreateSnapshot(widget, filename, delay = 0.2)
 \item{filename}{Name of output file (png format).}
 
 \item{delay}{Time to wait before taking screenshot, in seconds. Sometimes a longer delay is needed for all assets to display properly.}
+
+\item{mouse.hover}{Logical indicating whether or not to simulate mouse clicking in the middle of the widget.}
 }
 \description{
 Converts a htmlwidget to png image file

@@ -40,7 +40,8 @@ for (dat in dat.list)
         
         # Create name which will appear in the error message if test fails
         # Filestem should be prefixed by test file name to avoid name conflicts
-        filestem <- paste0("geographicmap-", dat, "-", names(opts)[ii])
+        # Abbreviation used to avoid non-portable file names
+        filestem <- paste0("gmap-", dat, "-", names(opts)[ii])
         
         test_that(filestem, {
             
