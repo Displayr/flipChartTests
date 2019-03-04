@@ -9,8 +9,11 @@ for (func in c("Column", "Bar", "Distribution"))
 {
     filestem <- paste("cchart", tolower(func), "axistitle", sep="-")
     test_that(filestem, {
-        expect_error(pp <- suppressWarnings(CChart("Column", xx, categories.title = "Categories", 
+        expect_error(pp <- suppressWarnings(CChart(func, xx, categories.title = "Categories", 
                                   values.title = "Values")), NA)
-        expect_true(TestWidget(pp, filestem))
+        expect_true(TestWidget(pp, filestem))     
+        
+        #print(pp)
+        #readline(prompt=paste0(filestem, ": press [enter] to continue: "))
     })
 }
