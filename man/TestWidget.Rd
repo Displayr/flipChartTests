@@ -4,7 +4,7 @@
 \alias{TestWidget}
 \title{TestWidget}
 \usage{
-TestWidget(widget, name, delay = 0.2, threshold = 0.001,
+TestWidget(widget, name, delay = 0.2, threshold = 0.001, ...,
   diff.path = "snapshots/diff", accepted.path = "snapshots/accepted")
 }
 \arguments{
@@ -15,6 +15,8 @@ TestWidget(widget, name, delay = 0.2, threshold = 0.001,
 \item{delay}{Time to wait before taking screenshot, in seconds. Sometimes a longer delay is needed for all assets to display properly.}
 
 \item{threshold}{Similarity parameter for comparing screenshots.}
+
+\item{...}{Other parameters passed to \code{\link{CreateSnapshot}}.}
 
 \item{diff.path}{Directory to place diff snapshot.}
 
