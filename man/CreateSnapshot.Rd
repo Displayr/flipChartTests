@@ -4,7 +4,9 @@
 \alias{CreateSnapshot}
 \title{CreateSnapshot}
 \usage{
-CreateSnapshot(widget, filename, delay = 0.2, mouse.hover = TRUE)
+CreateSnapshot(widget, filename, delay = 0.2, width = 992,
+  height = 744, mouse.hover = TRUE, mouse.xpos = 0.5,
+  mouse.ypos = 0.5)
 }
 \arguments{
 \item{widget}{The htmlwidget to display.}
@@ -13,7 +15,16 @@ CreateSnapshot(widget, filename, delay = 0.2, mouse.hover = TRUE)
 
 \item{delay}{Time to wait before taking screenshot, in seconds. Sometimes a longer delay is needed for all assets to display properly.}
 
-\item{mouse.hover}{Logical indicating whether or not to simulate mouse clicking in the middle of the widget.}
+\item{width}{Width of the snapshot viewport in pixels.}
+
+\item{height}{Height of the snapshot viewport in pixels.}
+
+\item{mouse.hover}{Logical indicating whether or not to simulate mouse clicking.
+Note that the cursor itself is not visible, only the effects of clicking.}
+
+\item{mouse.xpos}{Horizontal position of the mouse ranging from 0 (left) to 1 (right).}
+
+\item{mouse.ypos}{Vertical position of the mouse ranging from 0 (top) to 1 (bottom).}
 }
 \description{
 Converts a htmlwidget to png image file
