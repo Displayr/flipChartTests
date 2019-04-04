@@ -5,7 +5,7 @@
 \title{CompareSnapshot}
 \usage{
 CompareSnapshot(widget, diff.file, accepted.file, delay = 0.2,
-  threshold = 0.1, strict = FALSE)
+  threshold = 0.1, strict = FALSE, ...)
 }
 \arguments{
 \item{widget}{The htmlwidget to display.}
@@ -20,6 +20,8 @@ If this file does not exist, it will be created from a snapshot of the widget.}
 \item{threshold}{Similarity parameter for comparing screenshots.}
 
 \item{strict}{Whether to give warning if \code{accepted.file} does not exist.}
+
+\item{...}{Other parameters passed to \code{\link{CreateSnapshot}}.}
 }
 \value{
 Return \code{FALSE} only if the snapshot of the widget differs from

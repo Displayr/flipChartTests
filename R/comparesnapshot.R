@@ -12,6 +12,7 @@
 #' @param delay Time to wait before taking screenshot, in seconds. Sometimes a longer delay is needed for all assets to display properly.
 #' @param threshold Similarity parameter for comparing screenshots.
 #' @param strict Whether to give warning if \code{accepted.file} does not exist.
+#' @param ... Other parameters passed to \code{\link{CreateSnapshot}}.
 #' @importFrom visualTest isSimilar
 #' @export
 CompareSnapshot <- function(widget, 
@@ -19,18 +20,19 @@ CompareSnapshot <- function(widget,
                             accepted.file,
                             delay = 0.2,
                             threshold = 0.1,
-                            strict = FALSE)
+                            strict = FALSE,
+                            ...)
 {
     if (!file.exists(accepted.file))
     {
-        CreateSnapshot(widget, filename = accepted.file, delay = delay)
+        CreateSnapshot(widget, filename = accepted.file, delay = delay, ...)
         if (strict)
             warning("File ", accepted.file, " does not exist.")
         return (TRUE)
     }
     else
     {
-        CreateSnapshot(widget, filename = diff.file, delay = delay)
+        CreateSnapshot(widget, filename = diff.file, delay = delay, ...)
         res <- isSimilar(file = diff.file, fingerprint = accepted.file, threshold = threshold)
         if (res)
             unlink(diff.file)
