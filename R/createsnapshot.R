@@ -8,6 +8,7 @@
 #' @param delay Time to wait before taking screenshot, in seconds. Sometimes a longer delay is needed for all assets to display properly.
 #' @param mouse.hover Logical indicating whether or not to simulate mouse clicking.
 #'    Note that the cursor itself is not visible, only the effects of clicking.
+#' @param mouse.doubleclick Logical indicating whether to simulate doubleclicking. Overrides \code{mouse.hover}.
 #' @param mouse.xpos Horizontal position of the mouse ranging from 0 (left) to 1 (right).
 #' @param mouse.ypos Vertical position of the mouse ranging from 0 (top) to 1 (bottom).
 #' @details Works with plotly and rhtmlLabeledScatter. Errors with rhtmlPictograph.
@@ -15,7 +16,8 @@
 #' @importFrom webshot webshot
 #' @export
 CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 744,
-                           mouse.hover = TRUE, mouse.xpos = 0.5, mouse.ypos = 0.5)
+                           mouse.hover = TRUE, mouse.doubleclick = FALSE,
+                           mouse.xpos = 0.5, mouse.ypos = 0.5)
 {
     if (inherits(widget, "StandardChart"))
         widget <- widget$htmlwidget
@@ -32,8 +34,11 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
     saveWidget(widget, file = tmp.html, selfcontained = FALSE)
     
     eval <- NULL
-    if (mouse.hover)
+    if (mouse.doubleclick)
+        eval <- paste0("this.mouse.doubleclick(", mouse.xpos * width, ", ", mouse.ypos * height, ")")
+    else if (mouse.hover)
         eval <- paste0("this.mouse.click(", mouse.xpos * width, ", ", mouse.ypos * height, ")")
+    
     webshot(tmp.html, file = filename, delay = delay, eval = eval, cliprect = "viewport",
         vwidth = width, vheight = height)
 }

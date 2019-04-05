@@ -5,8 +5,8 @@
 \title{CreateSnapshot}
 \usage{
 CreateSnapshot(widget, filename, delay = 0.2, width = 992,
-  height = 744, mouse.hover = TRUE, mouse.xpos = 0.5,
-  mouse.ypos = 0.5)
+  height = 744, mouse.hover = TRUE, mouse.doubleclick = FALSE,
+  mouse.xpos = 0.5, mouse.ypos = 0.5)
 }
 \arguments{
 \item{widget}{The htmlwidget to display.}
@@ -21,6 +21,8 @@ CreateSnapshot(widget, filename, delay = 0.2, width = 992,
 
 \item{mouse.hover}{Logical indicating whether or not to simulate mouse clicking.
 Note that the cursor itself is not visible, only the effects of clicking.}
+
+\item{mouse.doubleclick}{Logical indicating whether to simulate doubleclicking. Overrides \code{mouse.hover}.}
 
 \item{mouse.xpos}{Horizontal position of the mouse ranging from 0 (left) to 1 (right).}
 
