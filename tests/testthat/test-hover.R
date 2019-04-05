@@ -19,12 +19,23 @@ test_that("Tooltips shown for small values",
 
 test_that("Legend toggle",
 {
-    # Phantomjs and Rstudio renders this differently from Chrome
-    # Legend toggle should actually be disabled for this particular chart
+    pp <- Bar(xmat, type = "Stacked", data.label.show = TRUE)
+    expect_true(TestWidget(pp, "legend-disabled-stacked-bar", mouse.doubleclick = TRUE,
+        mouse.xpos = 0.97, mouse.ypos = 0.08))
+    
+    pp <- Bar(xmat, type = "Stacked", data.label.show = FALSE)
+    expect_true(TestWidget(pp, "legend-notdisabled-stacked-bar", mouse.doubleclick = TRUE,
+        mouse.xpos = 0.97, mouse.ypos = 0.08))
     
     pp <- Column(xmat, type = "Stacked", data.label.show = TRUE)
-    expect_true(TestWidget(pp, "legend-stacked-bar", mouse.doubleclick = TRUE,
+    expect_true(TestWidget(pp, "legend-disabled-stacked-column", mouse.doubleclick = TRUE,
         mouse.xpos = 0.97, mouse.ypos = 0.08))
+    
+    pp <- Column(xmat, type = "Stacked", data.label.show = FALSE)
+    expect_true(TestWidget(pp, "legend-notdisabled-stacked-column", mouse.doubleclick = TRUE,
+        mouse.xpos = 0.97, mouse.ypos = 0.08))
+    
+    
     
 })
 
