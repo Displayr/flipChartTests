@@ -43,10 +43,10 @@ for (func in c("Area", "Bar", "Column")[3])
                 else
                 {
                     expect_error(suppressWarnings(eval(parse(text=cmd))), NA)
-                    #expect_true(TestWidget(pp, filestem))
+                    expect_true(TestWidget(pp, filestem))
                 
-                    print(pp)
-                    readline(prompt=paste0(filestem, ": press [enter] to continue: "))
+                    #print(pp)
+                    #readline(prompt=paste0(filestem, ": press [enter] to continue: "))
                     
                 }
             })
