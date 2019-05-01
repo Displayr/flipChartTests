@@ -21,6 +21,8 @@ r_packages:
 r_github_packages:
   - r-lib/remotes#340
   - Displayr/flipDevTools
+  - Displayr/flipFormat
+  - Displayr/flipTransformations
   - Displayr/flipStandardCharts
   - Displayr/flipChart
 
