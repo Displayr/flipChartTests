@@ -17,6 +17,7 @@ names(country.codes) <- c("AUS", "HUN", "SOM", "PAK")
 
 region.pct <- structure(c(-0.17, 0.155, NA, 0.39), .Names = c("Midwest", "Northeast", "South", "West"), statistic = "%")
 
+set.seed(12345)
 continents <- rnorm(5) * 100
 names(continents) <- c("Asia", "Europe", "Oceania", "North America", "Africa")
 
