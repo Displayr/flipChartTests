@@ -45,7 +45,26 @@ test_that("Legend toggle",
     expect_true(TestWidget(pp, "legend-notdisabled-stacked-column", mouse.doubleclick = TRUE,
         mouse.xpos = 0.97, mouse.ypos = 0.08))
     
+    # Unlike column and bar charts, the stacked area chart is stacked in the R code
+    # This means that the legend toggle will not work correctly with or without datalabels
+    # and now has been disabled (DS=2497)
+    pp <- Area(xmat, type = "Stacked", data.label.show = TRUE)
+    expect_true(TestWidget(pp, "legend-disabled-stacked-area", mouse.doubleclick = TRUE,
+        mouse.xpos = 0.97, mouse.ypos = 0.08))
     
+    pp <- Area(xmat, type = "Stacked", data.label.show = FALSE)
+    expect_true(TestWidget(pp, "legend-disabled-stacked-area-nodatalabels", mouse.doubleclick = TRUE,
+        mouse.xpos = 0.97, mouse.ypos = 0.08))
+
+    # Check legend toggling works properly for unstacked charts
+    for (chart in c("Area", "Bar", "Column", "Line", "Radar"))
+    {
+        filestem <- paste0("legendtoggle-", tolower(chart))
+        cmd <- paste0(chart, "(xmat, data.label.show = TRUE)")
+        expect_error(pp <- eval(parse(text=cmd)), NA)
+        expect_true(TestWidget(pp, paste0(filestem, ".png"), mouse.doubleclick = TRUE,
+            mouse.xpos = 0.97, mouse.ypos = 0.08))
+    }
     
 })
 
