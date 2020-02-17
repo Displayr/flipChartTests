@@ -39,6 +39,6 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
     else if (mouse.hover)
         eval <- paste0("this.mouse.click(", mouse.xpos * width, ", ", mouse.ypos * height, ")")
     
-    webshot(tmp.html, file = filename, delay = delay, eval = eval, cliprect = "viewport",
+    webshot(tmp.html, file = filename, delay = delay, eval = eval, cliprect = "viewport", debug = TRUE,
         vwidth = width, vheight = height)
 }
