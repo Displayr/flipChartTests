@@ -69,36 +69,36 @@ test_that("Bar/Column Annotations",
 {
     pp <- Column(data.with.stats, data.label.show = TRUE, annotation.list=list(list(data="p", 
                 type = "Arrow - up", threstype = "above threshold", threshold = 0.05, color = "#FF0000", size = 15)))
-    expect_true(TestWidget(pp, "annot-stackedcolumn-arrow"))
+    expect_true(TestWidget(pp, "annot-stackedcolumn-arrow", delay = 2))
 
 
     pp <- Column(vec.with.stats, data.label.show = TRUE, annotation.list=list(list(data="p", 
                  type = "Arrow - up", threstype = "above threshold", threshold = 0.05, color = "#0000FF")))
-    expect_true(TestWidget(pp, "annot-column-arrow"))
+    expect_true(TestWidget(pp, "annot-column-arrow", delay = 2))
 
     pp <- Column(vec.with.stats, data.label.show = TRUE, annotation.list = list(list(data = "p",
                  type = "Circle - filled", size = 30, color = "red", threstype = "above threshold", 
                  threshold = 0.05), list(data = "p", type = "Circle - thin outline", size = 30, color = "blue")))
-    expect_true(TestWidget(pp, "annot-column-circles"))
+    expect_true(TestWidget(pp, "annot-column-circles", delay = 2))
 
 
     pp <- Column(vec.with.stats, data.label.show = TRUE, annotation.list = list(list(data = "p",
                  type = "Circle - filled", size = 40, color = "red"), 
                  list(data = "p", type = "Circle - filled", size = 30, color = "orange"), 
                  list(data = "p", type = "Circle - filled", size = 20, color = "yellow")))
-    expect_true(TestWidget(pp, "annot-column-concentric-circles"))
+    expect_true(TestWidget(pp, "annot-column-concentric-circles", delay = 2))
 
     pp <- Bar(data.with.stats, data.label.show = TRUE, type = "Stacked", annotation.list = a1)
-    expect_true(TestWidget(pp, "annot-bar-opencircles"))
+    expect_true(TestWidget(pp, "annot-bar-opencircles", delay = 2))
 
     pp <- SmallMultiples(data.with.stats, "Bar", data.label.show = TRUE, annotation.list = a2)
-    expect_true(TestWidget(pp, "annot-smallmultbar-circles-and-arrows"))
+    expect_true(TestWidget(pp, "annot-smallmultbar-circles-and-arrows", delay = 2))
 
     pp <- SmallMultiples(data.with.stats, "BarMultiColor", data.label.show = TRUE, annotation.list = a3)
-    expect_true(TestWidget(pp, "annot-barmulitcolor-circles"))    
+    expect_true(TestWidget(pp, "annot-barmulitcolor-circles", delay = 2))    
 
     pp <- SmallMultiples(data.with.stats, "ColumnMultiColor", data.label.show = TRUE, annotation.list = a4)
-    expect_true(TestWidget(pp, "annot-columnmulticolor-text"))
+    expect_true(TestWidget(pp, "annot-columnmulticolor-text", delay = 2))
 })
 
 # Set up dataframe containing different types of data types for Scatterplots
@@ -150,7 +150,7 @@ test_that("Scatter plot annotations",
                   font.weight = "normal", font.style = "normal", format = ".2f", prefix = "Class "),
                   list(type = "Border", data = "Cost", threstype = "above threshold", threshold = "2.0",
                   color = "grey", width = 2)))
-    expect_true(TestWidget(pp, "annot-scatter-unorderedcat-thres"))
+    expect_true(TestWidget(pp, "annot-scatter-unorderedcat-thres", delay = 2))
 
     pp <- Scatter(dat, scatter.x.column = 7, annotation.list = list(list(type = "Arrow - up",
                   data = "Sporadic", threstype = "above threshold", threshold = "1.0",
@@ -159,7 +159,7 @@ test_that("Scatter plot annotations",
                   list(type = "Marker border", data = "Cost", threstype = "above threshold",
                   threshold = "1.0", width = 3, color = "yellow"),
                   list(type = "Marker border", data = "Date", threstype = "above threshold",
-                 threshold = "2017-01-9", width = 1, color = "red")))
+                 threshold = "2017-01-9", width = 1, color = "red", delay = 2)))
     expect_true(TestWidget(pp, "annot-scatter-date-thres"))   
     
     pp <- Scatter(dat, scatter.x.column = 5, annotation.list = list(list(type = "Arrow - up",
@@ -170,6 +170,6 @@ test_that("Scatter plot annotations",
                   threshold = "b", width = 3, color = "yellow"),
                   list(type = "Marker border", data = "Date", threstype = "above threshold",
                  threshold = "2017-01-9", width = 1, color = "red")))
-    expect_true(TestWidget(pp, "annot-scatter-orderedcat-thres"))
+    expect_true(TestWidget(pp, "annot-scatter-orderedcat-thres", delay = 2))
     
 })
