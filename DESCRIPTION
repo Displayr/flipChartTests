@@ -12,7 +12,7 @@ Imports: htmlwidgets,
          webshot2,
          visualTest,
 Remotes:
-    rstudio/webshot2
+    rstudio/webshot2,
     MangoTheCat/visualTest,
     Displayr/flipStandardCharts,
     Displayr/flipChart
