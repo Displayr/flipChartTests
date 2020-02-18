@@ -4,9 +4,17 @@
 \alias{CreateSnapshot}
 \title{CreateSnapshot}
 \usage{
-CreateSnapshot(widget, filename, delay = 0.2, width = 992,
-  height = 744, mouse.hover = TRUE, mouse.doubleclick = FALSE,
-  mouse.xpos = 0.5, mouse.ypos = 0.5)
+CreateSnapshot(
+  widget,
+  filename,
+  delay = 0.2,
+  width = 992,
+  height = 744,
+  mouse.hover = TRUE,
+  mouse.doubleclick = FALSE,
+  mouse.xpos = 0.5,
+  mouse.ypos = 0.5
+)
 }
 \arguments{
 \item{widget}{The htmlwidget to display.}

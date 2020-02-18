@@ -2,6 +2,8 @@ language: r
 r:
   - release
 dist: trusty
+addons:
+  chrome: stable
 sudo: required
 cache: packages
 warnings_are_errors: false
@@ -26,7 +28,6 @@ r_github_packages:
 
 script:
   - R CMD build --no-manual --no-build-vignettes --no-resave-data .
-  - Rscript -e 'install.packages("webshot"); webshot::install_phantomjs(force = TRUE)'
   - R CMD check --as-cran --no-manual --no-build-vignettes --no-tests *.tar.gz
   - travis_wait 40 ./runTravisTests.sh
   # Prepare repository to push to github

@@ -4,8 +4,15 @@
 \alias{TestWidget}
 \title{TestWidget}
 \usage{
-TestWidget(widget, name, delay = 0.2, threshold = 0.001, ...,
-  diff.path = "snapshots/diff", accepted.path = "snapshots/accepted")
+TestWidget(
+  widget,
+  name,
+  delay = 0.2,
+  threshold = 0.001,
+  ...,
+  diff.path = "snapshots/diff",
+  accepted.path = "snapshots/accepted"
+)
 }
 \arguments{
 \item{widget}{The htmlwidget to display.}

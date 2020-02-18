@@ -4,8 +4,15 @@
 \alias{CompareSnapshot}
 \title{CompareSnapshot}
 \usage{
-CompareSnapshot(widget, diff.file, accepted.file, delay = 0.2,
-  threshold = 0.1, strict = FALSE, ...)
+CompareSnapshot(
+  widget,
+  diff.file,
+  accepted.file,
+  delay = 0.2,
+  threshold = 0.1,
+  strict = FALSE,
+  ...
+)
 }
 \arguments{
 \item{widget}{The htmlwidget to display.}
