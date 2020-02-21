@@ -2,7 +2,7 @@ language: r
 r:
   - release
 dist: xenial
-addons:	services:
+addons:
   chrome: stable
 sudo: required
 cache: packages
