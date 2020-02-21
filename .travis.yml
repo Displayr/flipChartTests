@@ -2,8 +2,8 @@ language: r
 r:
   - release
 dist: xenial
-services:
-  - xvfb
+addons:	services:
+  chrome: stable
 sudo: required
 cache: packages
 warnings_are_errors: false
@@ -14,9 +14,11 @@ before_install:
   - sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
   - sudo apt-get -qq update
   - sudo apt-get install -y libgdal-dev libproj-dev python-protobuf libprotoc-dev libprotobuf-dev libv8-dev librsvg2-dev libmpfr-dev
+  - echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+  - sudo apt-get install -qq ttf-mscorefonts-installer
+  - sudo apt-get install -y ttf-ancient-fonts fonts-noto ttf-mscorefonts-installer fonts-noto-cjk xfonts-unifont ttf-unifont
+  - sudo fc-cache
   - Rscript tools/travis_run_before_install.R
-  - npm install -g casperjs@1.0.4
-  - phantomjs --version
 
 r_packages:
   - devtools

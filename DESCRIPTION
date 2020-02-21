@@ -9,10 +9,11 @@ License: GPL-3
 Depends: R (>= 2.10)
 LazyData: TRUE
 Imports: htmlwidgets,
-         webshot,
+         webshot2,
          visualTest,
 Remotes:
     MangoTheCat/visualTest,
+    rstudio/webshot2,
     Displayr/flipStandardCharts,
     Displayr/flipChart
 Suggests:
