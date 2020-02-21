@@ -13,7 +13,7 @@
 #' @param mouse.ypos Vertical position of the mouse ranging from 0 (top) to 1 (bottom).
 #' @details Works with plotly and rhtmlLabeledScatter. Errors with rhtmlPictograph.
 #' @importFrom htmlwidgets saveWidget
-#' @importFrom webshot2 webshot
+#' @importFrom webshot webshot
 #' @export
 CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 744,
                            mouse.hover = TRUE, mouse.doubleclick = FALSE,
@@ -39,6 +39,6 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
     else if (mouse.hover)
         eval <- paste0("this.mouse.click(", mouse.xpos * width, ", ", mouse.ypos * height, ")")
     
-    webshot(tmp.html, file = filename, delay = delay, cliprect = "viewport",
+    webshot(tmp.html, file = filename, delay = delay, cliprect = "viewport", eval = eval, debug = TRUE,
         vwidth = width, vheight = height)
 }
