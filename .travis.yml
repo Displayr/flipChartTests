@@ -15,6 +15,7 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libgdal-dev libproj-dev python-protobuf libprotoc-dev libprotobuf-dev libv8-dev librsvg2-dev libmpfr-dev
   - Rscript tools/travis_run_before_install.R
+  - npm install -g casperjs@1.0.4
   - phantomjs --version
 
 r_packages:
