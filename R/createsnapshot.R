@@ -36,7 +36,7 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
     saveWidget(widget, file = tmp.html, selfcontained = FALSE)
    
     b <- ChromoteSession$new(width = width, height = height)
-    p$Browser$getVersion()
+    b$Browser$getVersion()
     cat("navigating to", tmp.html, "\n")
     b$Page$navigate(tmp.html)
     
