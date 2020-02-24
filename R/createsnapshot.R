@@ -17,6 +17,7 @@
 #' @details Works with plotly and rhtmlLabeledScatter. Errors with rhtmlPictograph.
 #' @importFrom htmlwidgets saveWidget
 #' @import chromote
+#' @importFrom webshot2 webshot
 #' @export
 CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 744,
                            mouse.hover = TRUE, mouse.click = FALSE, mouse.doubleclick = FALSE,
@@ -26,33 +27,31 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
         widget <- widget$htmlwidget
     # Ensure that filename has 'png' suffix which is used by webshot
     if (!grepl(".png$", tolower(filename)))
-        filename <- paste0("file://", filename, ".png")
+        filename <- paste0(filename, ".png")
    
     # Create temporary html file
     tmp.files <- tempdir()
     tmp.html <- paste0(tmp.files, ".html")
     on.exit(unlink(tmp.html), add = TRUE) 
-    on.exit(unlink(tmp.files), add = TRUE) 
+    on.exit(unlink(tmp.files), add = TRUE)
     saveWidget(widget, file = tmp.html, selfcontained = FALSE)
    
     b <- ChromoteSession$new(width = width, height = height)
-    b$Browser$getVersion()
-    cat("navigating to", tmp.html, "\n")
-    b$Page$navigate(tmp.html)
+    b$Page$navigate(paste("file://", tmp.html))
     
     xpos <- mouse.xpos * width
     ypos <- mouse.ypos * height
 
-    #if (mouse.click || mouse.doubleclick)
-    #{
-    #    b$Input$dispatchMouseEvent(type = "mousePressed", x = xpos, y = ypos, 
-    #                               button = "left", pointerType = "mouse", 
-    #                               clickCount = if (mouse.doubleclick) 2 else 1)    
-    #    b$Input$dispatchMouseEvent(type = "mouseReleased", x = xpos, y = ypos, 
-    #                               button = "left", pointerType = "mouse", 
-    #                               clickCount = if (mouse.doubleclick) 2 else 1)    
-    #} else if (mouse.hover)
-    #    b$Input$dispatchMouseEvent(type = "mouseMoved", x = xpos, y = ypos)
+    if (mouse.click || mouse.doubleclick)
+    {
+        b$Input$dispatchMouseEvent(type = "mousePressed", x = xpos, y = ypos, 
+                                   button = "left", pointerType = "mouse", 
+                                   clickCount = if (mouse.doubleclick) 2 else 1)    
+        b$Input$dispatchMouseEvent(type = "mouseReleased", x = xpos, y = ypos, 
+                                   button = "left", pointerType = "mouse", 
+                                   clickCount = if (mouse.doubleclick) 2 else 1)    
+    } else if (mouse.hover)
+        b$Input$dispatchMouseEvent(type = "mouseMoved", x = xpos, y = ypos)
     
     b$screenshot(filename)
     invisible(b$close())
