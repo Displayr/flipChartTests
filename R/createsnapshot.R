@@ -26,7 +26,7 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
         widget <- widget$htmlwidget
     # Ensure that filename has 'png' suffix which is used by webshot
     if (!grepl(".png$", tolower(filename)))
-        filename <- paste0(filename, ".png")
+        filename <- paste0("file://", filename, ".png")
    
     # Create temporary html file
     tmp.files <- tempdir()
