@@ -33,7 +33,7 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
     tmp.files <- tempdir()
     tmp.html <- paste0(tmp.files, ".html")
     on.exit(unlink(tmp.html), add = TRUE) 
-    on.exit(unlink(tmp.files), add = TRUE)
+    on.exit(unlink(tmp.files, recursive = TRUE), add = TRUE)
     saveWidget(widget, file = tmp.html, selfcontained = FALSE)
    
     b <- ChromoteSession$new(width = width, height = height)
