@@ -17,7 +17,6 @@
 #' @details Works with plotly and rhtmlLabeledScatter. Errors with rhtmlPictograph.
 #' @importFrom htmlwidgets saveWidget
 #' @import chromote
-#' @importFrom webshot2 webshot
 #' @export
 CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 744,
                            mouse.hover = TRUE, mouse.click = FALSE, mouse.doubleclick = FALSE,
