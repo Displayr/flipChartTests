@@ -41,16 +41,16 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
     xpos <- mouse.xpos * width
     ypos <- mouse.ypos * height
 
-    if (mouse.click || mouse.doubleclick)
-    {
-        b$Input$dispatchMouseEvent(type = "mousePressed", x = xpos, y = ypos, 
-                                   button = "left", pointerType = "mouse", 
-                                   clickCount = if (mouse.doubleclick) 2 else 1)    
-        b$Input$dispatchMouseEvent(type = "mouseReleased", x = xpos, y = ypos, 
-                                   button = "left", pointerType = "mouse", 
-                                   clickCount = if (mouse.doubleclick) 2 else 1)    
-    } else if (mouse.hover)
-        b$Input$dispatchMouseEvent(type = "mouseMoved", x = xpos, y = ypos)
+    #if (mouse.click || mouse.doubleclick)
+    #{
+    #    b$Input$dispatchMouseEvent(type = "mousePressed", x = xpos, y = ypos, 
+    #                               button = "left", pointerType = "mouse", 
+    #                               clickCount = if (mouse.doubleclick) 2 else 1)    
+    #    b$Input$dispatchMouseEvent(type = "mouseReleased", x = xpos, y = ypos, 
+    #                               button = "left", pointerType = "mouse", 
+    #                               clickCount = if (mouse.doubleclick) 2 else 1)    
+    #} else if (mouse.hover)
+    #    b$Input$dispatchMouseEvent(type = "mouseMoved", x = xpos, y = ypos)
     
     b$screenshot(filename)
     invisible(b$close())
