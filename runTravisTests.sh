@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ -d tests/testthat ]; then
-    echo "tfile <- tempfile()" > test.R
+    echo "tfile <- tempfile(tmpdir = '.', fileext = '.txt')" > test.R
     echo "cat('Writing output to', tfile, '\n')" >> test.R
-    echo "capture.output(res<-devtools::test(), file = tfile)" >> test.R
+    echo "capture.output(res<-devtools::test(), file = tfile, type = 'output')" >> test.R
     echo "print(file.exists(tfile))" >> test.R
     echo "out <- readLines(tfile)" >> test.R
     echo "cat(out, sep = '\n')" >> test.R
