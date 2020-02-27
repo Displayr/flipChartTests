@@ -52,6 +52,9 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
     } else if (mouse.hover)
         b$Input$dispatchMouseEvent(type = "mouseMoved", x = xpos, y = ypos)
     
+    if (isTRUE(is.finite(delay)) && delay > 0)
+        Sys.sleep(delay)
+    
     b$screenshot(filename)
     invisible(b$close())
 }
