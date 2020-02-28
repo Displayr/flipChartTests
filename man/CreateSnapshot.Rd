@@ -7,7 +7,7 @@
 CreateSnapshot(
   widget,
   filename,
-  delay = 0.2,
+  delay = 0,
   width = 992,
   height = 744,
   mouse.hover = TRUE,

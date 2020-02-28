@@ -18,7 +18,7 @@
 #' @importFrom htmlwidgets saveWidget
 #' @import chromote
 #' @export
-CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 744,
+CreateSnapshot <- function(widget, filename, delay = 0.0, width = 992, height = 744,
                            mouse.hover = TRUE, mouse.click = FALSE, mouse.doubleclick = FALSE,
                            mouse.xpos = 0.5, mouse.ypos = 0.5)
 {
