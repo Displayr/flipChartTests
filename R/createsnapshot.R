@@ -37,13 +37,13 @@ CreateSnapshot <- function(widget, filename, delay = 0.0, width = 992, height = 
    
     b <- ChromoteSession$new(width = width, height = height)
     b$Page$navigate(paste0("file://", tmp.html))
-    b$Page$loadEventFired()
     
     xpos <- mouse.xpos * width
     ypos <- mouse.ypos * height
 
     if (mouse.click || mouse.doubleclick)
     {
+        b$Page$loadEventFired()
         b$Input$dispatchMouseEvent(type = "mousePressed", x = xpos, y = ypos, 
                                    button = "left", pointerType = "mouse", 
                                    clickCount = if (mouse.doubleclick) 2 else 1)    
