@@ -18,7 +18,7 @@ dat2[["dates"]] <- matrix(rpois(20, 4) * 1e-3, 10, 2,
                 dimnames=list(sprintf("%02d/01/2017", c((1:10)+10)), c("M2 2019", "M2 2020")))
 
 opts <- c('default' = '',
-          'categoryformat' = 'x.tick.format = "category", data.label.show = TRUE, type = "Stacked", opacity = 0.4', 
+          'categoryformat' = 'x.tick.format = "Category", data.label.show = TRUE, type = "Stacked", opacity = 0.4', 
           'zeroaxis' = 'x.zero = TRUE, x.data.reversed = TRUE, data.label.show = TRUE',
           'reversed' = 'x.data.reversed = TRUE, y.data.reversed = TRUE, data.label.show = TRUE',
           'x2datalabels' = 'x2.data.label.show = TRUE, x2.data.label.font.color = "red", x2.data.label.font.family = "Impact", x2.data.label.font.size = 7, x2.data.label.format = ".3f"',
@@ -27,7 +27,7 @@ opts <- c('default' = '',
          )
 
 library(flipStandardCharts)
-for (i in 1)
+for (i in 1:length(dat1))
 {
     for (j in 1:length(opts))
     {
