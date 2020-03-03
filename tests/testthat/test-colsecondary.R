@@ -27,7 +27,7 @@ opts <- c('default' = '',
          )
 
 library(flipStandardCharts)
-for (i in 3) #1:length(dat1))
+for (i in 1)
 {
     for (j in 1:length(opts))
     {
@@ -36,7 +36,7 @@ for (i in 3) #1:length(dat1))
         {
             cmd <- paste0("pp <- Column(dat1[[", i, "]], x2 = dat2[[", i, "]], ",
                           opts[j], ")")
-            expect_error(eval(parse(text = cmd)), NA)
+            expect_error(suppressWarnings(eval(parse(text = cmd))), NA)
             expect_true(TestWidget(pp, filestem))
             #print(pp)
             #readline(prompt=paste0(filestem, ": press [enter] to continue: "))
