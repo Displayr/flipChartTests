@@ -5,8 +5,9 @@ dat2 <- list()
 
 # Inputs need to be paired to have the same type of x-axis
 set.seed(654321)
-dat1[["numeric"]] <- matrix(rpois(60, 4), 20, 3, dimnames = list(1:20, LETTERS[1:3])) # all positives
-dat2[["numeric"]] <- matrix(rpois(48, 4), 16, 3, dimnames = list(c(5:10, 15:24), LETTERS[3+(1:3)]))
+fseq <- c(1,2,3,5,8,13,21,34,55)
+dat1[["numeric"]] <- matrix(rpois(27, 4), 9, 3, dimnames = list(fseq, LETTERS[1:3]))
+dat2[["numeric"]] <- matrix(rpois(45, 4), 15, 3, dimnames = list(c(0, fseq, 56:60), LETTERS[3+(1:3)]))
 
 dat1[["categoricals"]] <- matrix(c(1:20), 10, 2, dimnames=list(letters[1:10], c("X", "Y")))
 dat2[["categoricals"]] <- matrix(rpois(10, 5) * 1e6, 10, 1, dimnames=list(letters[1:10], c("Random")))
