@@ -172,4 +172,56 @@ test_that("Scatter plot annotations",
                  threshold = "2017-01-9", width = 1, color = "red")))
     expect_true(TestWidget(pp, "annot-scatter-orderedcat-thres", delay = 2))
     
+    
+
+    pp <- Scatter(dat, scatter.x.column = 3, scatter.y.column = 1, scatter.sizes.column = 2,
+                  annotation.list = list(list(type = "Marker border", data = "Score", 
+                  threstype = "above threshold", threshold = "0.0", color = "red", width = 1)))
+    expect_true(TestWidget(pp, "annot-scatter-markerbordersize", delay = 2))
+                  
+                  
+    pp <- Scatter(dat, scatter.x.column = 3, scatter.y.column = 1, scatter.sizes.column = 2,
+                  annotation.list = list(list(type = "Text - after data label", data = "Cost", 
+                  threstype = "above threshold", threshold = "0.0", size = 10, 
+                  font.family = "Arial", font.weight = "normal", font.style = "normal", 
+                  format = ".2f", prefix = "$"),
+                  list(type = "Border", data = "Cost", threstype = "above threshold", 
+                  threshold = "1.0", color = "red", width = 1, shiftright = 5)))
+    expect_true(TestWidget(pp, "annot-scatter-labelshiftright", delay = 2))
+                  
+    
+    pp <- Scatter(dat, scatter.x.column = 3, scatter.y.column = 1, scatter.sizes.column = 2,
+                  annotation.list = list(list(type = "Text - after data label", data = "Cost", 
+                  threstype = "above threshold", threshold = "0.0", size = 10, 
+                  font.family = "Arial", font.weight = "normal", font.style = "normal", 
+                  format = ".2f", prefix = "$"),
+                  list(type = "Shadow", data = "Cost", threstype = "above threshold", 
+                  threshold = "1.0", color = "red", size = 20, shiftright = 5)))
+    expect_true(TestWidget(pp, "annot-scatter-shadow", delay = 2))
+    
+    
+    pp <- Scatter(dat, scatter.x.column = 3, scatter.y.column = 1, scatter.sizes.column = 2,
+                  annotation.list = list(
+                  list(type = "Arrow - up", data = "Cost", threstype = "above threshold", 
+                  threshold = "1.0", color = "red", size = 15, shiftright = 5),
+                  list(type = "Arrow - down", data = "Cost", threstype = "below threshold", 
+                       threshold = "1.0", color = "blue", size = 15, shiftright = 10),
+                  list(type = "Text - after data label", data = "Cost", 
+                       threstype = "above threshold", threshold = "0.0", size = 10, 
+                       font.family = "Arial", font.weight = "normal", font.style = "normal", 
+                       format = ".2f", prefix = "$")))
+    expect_true(TestWidget(pp, "annot-scatter-arrows", delay = 2))
+    
+    pp <- Scatter(dat, scatter.x.column = 3, scatter.y.column = 1, scatter.sizes.column = 2,
+                  annotation.list = list(
+                    list(type = "Text - after data label", data = "Cost", 
+                         threstype = "below threshold", threshold = "Inf", size = 10, 
+                         font.family = "Arial", font.weight = "normal", font.style = "normal", 
+                         format = ".2f", prefix = "$"),
+                    list(type = "Hide", data = "Cost", threstype = "below threshold",
+                         threshold = "1.0")))
+    expect_true(TestWidget(pp, "annot-scatter-hidetext", delay = 2))
+
+
+    
 })
