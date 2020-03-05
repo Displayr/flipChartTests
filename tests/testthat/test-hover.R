@@ -12,19 +12,19 @@ test_that("Tooltips shown for small values",
     expect_true(TestWidget(pp, "hover-smallvals-bar", mouse.xpos = 0.09, mouse.ypos = 0.1))
     
     pp <- Bar(xx[1:4])
-    expect_true(TestWidget(pp, "hover-wide-bar", mouse.xpos = 0.08, mouse.ypos = 0.1))
+    expect_true(TestWidget(pp, "hover-wide-bar", mouse.xpos = 0.1, mouse.ypos = 0.15))
     
     pp <- Bar(x2d, type = "Stacked", data.label.show = TRUE)
     expect_true(TestWidget(pp, "hover-smallvals-stackedbar", mouse.xpos = 0.27, mouse.ypos = 0.1))
     
     pp <- Column(xx)
-    expect_true(TestWidget(pp, "hover-smallvals-column", mouse.xpos = 0.1, mouse.ypos = 0.97))
+    expect_true(TestWidget(pp, "hover-smallvals-column", mouse.xpos = 0.1, mouse.ypos = 0.95))
     
     pp <- Pyramid(xx, data.label.show = TRUE)
     expect_true(TestWidget(pp, "hover-smallvals-pyramid", mouse.xpos = 0.531, mouse.ypos = 0.1))
     
     pp <- SmallMultiples(x2d, "Pyramid", data.label.show = TRUE)
-    expect_true(TestWidget(pp, "hover-smallvals-pyramid-smallmult", mouse.xpos = 0.541, mouse.ypos = 0.561))
+    expect_true(TestWidget(pp, "hover-smallvals-pyramid-smallmult", mouse.xpos = 0.5, mouse.ypos = 0.54))
     
 })
 
