@@ -97,4 +97,33 @@ test_that("Matrix of data label inputs", {
     expect_true(TestWidget(pp, "datalabelmatrix-line-missing1"))
     expect_warning(pp <- Line(missing124, data.label.show = showmat, marker.show = showmat, marker.size = 20), "Missing values have been omitted")
     expect_true(TestWidget(pp, "datalabelmatrix-line-missing124"))
-})                                                                                                                                                                                                                    
+    
+    sizemat <- matrix(3, 20, 3)
+    sizemat[c(3, 5, 19),] <- 8
+    expect_warning(pp <- Line(missing124, marker.show = TRUE, 
+        marker.size = sizemat*3, opacity = 0.2,
+        data.label.show = TRUE, data.label.position = c("top", "bottom", "bottom"),
+        data.label.font.autocolor = TRUE), "Missing values have been omitted")
+    expect_true(TestWidget(pp, "datalabelmatrix-line-markersizes"))
+    
+    # Invisible markers to reposition datalabels
+    m.size <- rep(1, 20)
+    m.size[c(37, 39, 41, 43) - 24] <- 10
+    m.size[c(37) - 24] <- 20
+    m.prefix <- rep("", 20)
+    m.prefix[c(31, 32, 36) - 24] <- "   "
+    m.suffix <- rep("", 20)
+    m.suffix[c(29, 34) - 24] <- "   "
+    expect_warning(pp <- Line(missing124[,1], data.label.show = TRUE, 
+        marker.show = TRUE, marker.opacity = 0, marker.size = m.size, 
+        data.label.prefix = m.prefix, data.label.suffix = m.suffix), "Missing values have been omitted")
+    expect_true(TestWidget(pp, "datalabelmatrix-markers-invisible"))
+
+    # Line markers in secondary data series
+    expect_error(pp <- Column(dat2dpos, x2 = dat2d, opacity = 0.2, x2.data.label.show.at.ends = TRUE,
+        x2.marker.show.at.ends = TRUE), NA)
+    expect_true(TestWidget(pp, "datalabelmatrix-combined-chart"))
+    expect_error(Column(dat2dpos, x2 = dat2d, opacity = 0.2, x2.data.label.show.at.ends = TRUE,
+        x2.marker.show.at.ends = TRUE, type = "Stacked"), NA)
+    expect_true(TestWidget(pp, "datalabelmatrix-combined-chart-stacked"))
+})
