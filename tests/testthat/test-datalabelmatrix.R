@@ -123,7 +123,7 @@ test_that("Matrix of data label inputs", {
     expect_error(pp <- Column(dat2dpos, x2 = dat2d, opacity = 0.2, x2.data.label.show.at.ends = TRUE,
         x2.marker.show.at.ends = TRUE), NA)
     expect_true(TestWidget(pp, "datalabelmatrix-combined-chart"))
-    expect_error(Column(dat2dpos, x2 = dat2d, opacity = 0.2, x2.data.label.show.at.ends = TRUE,
+    expect_error(pp <- Column(dat2dpos, x2 = dat2d, opacity = 0.2, x2.data.label.show.at.ends = TRUE,
         x2.marker.show.at.ends = TRUE, type = "Stacked"), NA)
     expect_true(TestWidget(pp, "datalabelmatrix-combined-chart-stacked"))
 })
