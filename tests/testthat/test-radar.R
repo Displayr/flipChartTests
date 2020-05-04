@@ -58,3 +58,20 @@ for (dat in dat.list)
     }
 }
 
+test_that("Adjustable y.bounds.minimum",
+{
+    pp <- Radar(negatives)
+    expect_true(TestWidget(pp, "radar-negatives"))
+    
+    pp <- Radar(negatives[1:5], y.bounds.maximum = -2, y.bounds.minimum = 2,
+            data.label.show = TRUE, x.tick.show = FALSE, data.label.format = ".2f")
+    expect_true(TestWidget(pp, "radar-negatives-labelformat"))
+    
+    pp <- Radar(named, y.bounds.minimum = 10)
+    expect_true(TestWidget(pp, "radar-negatives-ymin"))
+    
+    pp<- SmallMultiples(matrix2d, "Radar", data.label.show = TRUE,
+        y.bounds.minimum = "23", y.bounds.maximum = "12")
+    expect_true(TestWidget(pp, "radar-smallmult-ybounds"))
+})
+
