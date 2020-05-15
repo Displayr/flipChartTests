@@ -67,11 +67,15 @@ test_that("Adjustable y.bounds.minimum",
             data.label.show = TRUE, x.tick.show = FALSE, data.label.format = ".2f")
     expect_true(TestWidget(pp, "radar-negatives-labelformat"))
     
-    pp <- Radar(named, y.bounds.minimum = 10)
+    pp <- Radar(negatives, y.bounds.minimum = 10)
     expect_true(TestWidget(pp, "radar-negatives-ymin"))
     
-    pp<- SmallMultiples(matrix2d, "Radar", data.label.show = TRUE,
-        y.bounds.minimum = "23", y.bounds.maximum = "12")
+    pp <- Radar(negatives, y.bounds.maximum = 10)
+    expect_true(TestWidget(pp, "radar-negatives-ymax"))
+    
+    expect_warning(pp<- SmallMultiples(matrix2d, "Radar", data.label.show = TRUE,
+        y.bounds.minimum = "23", y.bounds.maximum = "12"),
+        "Please specify a value outside [12, 26].", fixed = TRUE)
     expect_true(TestWidget(pp, "radar-smallmult-ybounds"))
 })
 
