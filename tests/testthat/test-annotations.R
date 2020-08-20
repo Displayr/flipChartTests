@@ -101,6 +101,34 @@ test_that("Bar/Column Annotations",
     expect_true(TestWidget(pp, "annot-columnmulticolor-text", delay = 2))
 })
 
+a5 <- list(list(type = "Arrow - up", data = "p", threstype = "below threshold",
+    threshold = "0.05", color = "red", size = 20, width = 1,
+    offset = 0, font.family = "Arial", font.weight = "normal",
+    font.style = "normal"), list(type = "Arrow - down", data = "p",
+    threstype = "above threshold", threshold = "0.05", color = "blue",
+    size = 20, width = 1, offset = 0, font.family = "Arial",
+    font.weight = "normal", font.style = "normal"))
+
+test_that("Line annotations",
+{
+    pp <- Line(data.with.stats[-10,,], annotation.list = a5, data.label.show = TRUE)
+    expect_true(TestWidget(pp, "annot-line", delay = 2))
+    
+    pp <- Line(data.with.stats[-10,,], annotation.list = a5, data.label.show = TRUE,
+        data.label.show.at.ends = TRUE)
+    expect_true(TestWidget(pp, "annot-line-at-ends", delay = 2))
+    
+    pp <- SmallMultiples(data.with.stats[-10,,], "Line", annotation.list = a5,
+        data.label.show = TRUE)
+    expect_true(TestWidget(pp, "annot-line-smallmult", delay = 2))
+    
+    pp <- SmallMultiples(data.with.stats[-10,,], "Line", annotation.list = a5,
+        data.label.show = TRUE, data.label.show.at.ends = TRUE,
+        marker.show.at.ends = TRUE, marker.size = 10)
+    expect_true(TestWidget(pp, "annot-line-smallmult-at-ends", delay = 2))
+})
+
+
 # Set up dataframe containing different types of data types for Scatterplots
 set.seed(1234)
 dat <- data.frame('Score' = rnorm(20),
