@@ -24,7 +24,7 @@ test.args <- c('default' = '',
     'legendpos' = 'legend.position.y=0.5, legend.position.x=0, legend.font.color="red", legend.fill.opacity=0',
     'legendbg' = 'legend.fill.color="blue", legend.fill.opacity=0.5, legend.border.color="red", legend.border.line.width=2',
     'margins' = 'margin.left=0, margin.right=0, margin.top=0, margin.inner.pad=10, margin.bottom=0, background.fill.color="blue", background.fill.opacity=1, charting.area.fill.color="red", charting.area.fill.opacity=1, legend.show=FALSE, grid.show=FALSE',
-    'marginsnoautoexpand' = 'data.labels.show = TRUE, margin.autoexpand = FALSE, margin.left=0, margin.right=0, margin.top=0, margin.inner.pad=10, margin.bottom=0, background.fill.color="blue", background.fill.opacity=1, charting.area.fill.color="red", charting.area.fill.opacity=1, legend.show=FALSE, grid.show=FALSE',
+    'marginsnoautoexpand' = 'data.label.show = TRUE, margin.autoexpand = FALSE, margin.left=0, margin.right=0, margin.top=0, margin.inner.pad=10, margin.bottom=0, background.fill.color="blue", background.fill.opacity=1, charting.area.fill.color="red", charting.area.fill.opacity=1, legend.show=FALSE, grid.show=FALSE',
     'font' = 'global.font.family="Courier", global.font.color="red"',
     'modebar' = 'modebar.show = TRUE')
 
