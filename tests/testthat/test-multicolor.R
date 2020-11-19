@@ -70,3 +70,10 @@ for (ff in funcs)
         }
     }
 }
+
+test_that("ColumnMultiColor + missing endpoints",
+{
+    xx <- c(A = 1, B = 2, C = NA)
+    pp <- ColumnMultiColor(xx, data.label.show = TRUE)
+    expect_true(TestWidget(pp, "multicolor-column-missingend"))
+})
