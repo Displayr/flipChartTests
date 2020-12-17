@@ -26,7 +26,6 @@ r_packages:
 
 r_github_packages:
   - Displayr/flipDevTools
-  - Displayr/plotly@d0cf5f4a4d76ef65d836804858466a0c40eb9a74
   - Displayr/flipStandardCharts
   - Displayr/flipChart@DS-3152
 
