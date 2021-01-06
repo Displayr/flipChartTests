@@ -15,7 +15,8 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install libgit2-dev
   - sudo apt-get install -y r-cran-rcppeigen
-  - sudo apt-get install -qq ttf-mscorefonts-installer
+  - sudo apt-get install -y ttf-ancient-fonts fonts-noto ttf-mscorefonts-installer fonts-noto-cjk xfonts-unifont ttf-unifont
+  - echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
   - sudo fc-cache
   - Rscript tools/travis_run_before_install.R
 
