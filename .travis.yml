@@ -19,8 +19,6 @@ before_install:
   - sudo apt-get install -y ttf-ancient-fonts fonts-noto ttf-mscorefonts-installer fonts-noto-cjk xfonts-unifont ttf-unifont
   - echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
   - sudo fc-cache
-  - export flipStandardCharts_BRANCH_NAME=DS-3136
-  - export verbs_BRANCH_NAME=DS-3136-higher-dim
   - Rscript tools/travis_run_before_install.R
 
 r_packages:
