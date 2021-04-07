@@ -29,7 +29,7 @@ CreateSnapshot <- function(widget, filename, delay = 0.0, width = 992, height = 
         filename <- paste0(filename, ".png")
    
     # Create temporary html file
-    tmp.files <- tempdir()
+    tmp.files <- tempfile()
     tmp.html <- paste0(tmp.files, ".html")
     on.exit(unlink(tmp.html), add = TRUE) 
     on.exit(unlink(tmp.files, recursive = TRUE), add = TRUE)

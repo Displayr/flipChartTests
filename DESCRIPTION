@@ -1,7 +1,7 @@
 Package: flipChartTests
 Type: Package
 Title: Visual unit tests for flipChart and flipStandardCharts
-Version: 1.2.4
+Version: 1.2.5
 Author: Displayr <opensource@displayr.com>
 Maintainer: Displayr <opensource@displayr.com>
 Description: This package contains no code. It only used for testing.
@@ -11,6 +11,7 @@ LazyData: TRUE
 Imports: htmlwidgets,
          chromote,
          visualTest,
+         png
 Remotes:
     MangoTheCat/visualTest,
     rstudio/chromote@a28092d8ea08eb6625583ca223f31ed6d0a08980,
