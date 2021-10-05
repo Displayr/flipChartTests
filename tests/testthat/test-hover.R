@@ -69,12 +69,20 @@ test_that("Legend toggle",
 
 # We can't directly simulate the dragging motion to trigger zoom
 # but we can see allowed interactions from the modebar
-test_that("zoom",
+cfunc <- c("Area", "Bar", "Column", "Line", "Radar", "Scatter")
+for (cc in cfunc)
 {
-    pp <- Bar(xmat, data.label.show = TRUE, modebar.show = TRUE, zoom.enable = TRUE)
-    expect_true(TestWidget(pp, "zoom-enabled-bar"))
-    
-    pp <- Bar(xmat, data.label.show = TRUE, modebar.show = TRUE, zoom.enable = FALSE)
-    expect_true(TestWidget(pp, "zoom-disabled-bar"))
-})
+    test_that("zoom",
+    {
+        ff <- paste0("zoom-enabled-", tolower(cc))
+        cmd <- paste0("pp <-", cc, "(xmat, data.label.show = TRUE, modebar.show = TRUE, zoom.enable = TRUE)")
+        expect_error(suppressWarnings(eval(parse(text=cmd))), NA)
+        expect_true(TestWidget(pp, ff))
+
+        ff <- paste0("zoom-disabled-", tolower(cc))
+        cmd <- paste0("pp <-", cc, "(xmat, data.label.show = TRUE, modebar.show = TRUE, zoom.enable = FALSE)")
+        expect_error(suppressWarnings(eval(parse(text=cmd))), NA)
+        expect_true(TestWidget(pp, ff))
+    })
+}
 
