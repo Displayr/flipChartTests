@@ -15,7 +15,7 @@ test_that("Tooltips shown for small values",
     expect_true(TestWidget(pp, "hover-wide-bar", mouse.xpos = 0.1, mouse.ypos = 0.15))
     
     pp <- Bar(x2d, type = "Stacked", data.label.show = TRUE)
-    expect_true(TestWidget(pp, "hover-smallvals-stackedbar", mouse.xpos = 0.27, mouse.ypos = 0.1))
+    expect_true(TestWidget(pp, "hover-smallvals-stackedbar", mouse.xpos = 0.28, mouse.ypos = 0.1))
     
     pp <- Column(xx)
     expect_true(TestWidget(pp, "hover-smallvals-column", mouse.xpos = 0.1, mouse.ypos = 0.95))
@@ -30,31 +30,16 @@ test_that("Tooltips shown for small values",
 
 test_that("Legend toggle",
 {
-    pp <- Bar(xmat, type = "Stacked", data.label.show = TRUE)
-    expect_true(TestWidget(pp, "legend-disabled-stacked-bar", mouse.doubleclick = TRUE,
-        mouse.xpos = 0.97, mouse.ypos = 0.08, delay = 2))
+    # Check legend toggling works properly for stacked charts
+    for (chart in c("Area", "Bar", "Column"))
+    {
+        filestem <- paste0("legendtoggle-stacked-", tolower(chart))
+        cmd <- paste0(chart, "(xmat, type = 'Stacked', data.label.show = TRUE)")
+        expect_error(pp <- eval(parse(text=cmd)), NA)
+        expect_true(TestWidget(pp, paste0(filestem, ".png"), mouse.doubleclick = TRUE,
+            mouse.xpos = 0.97, mouse.ypos = 0.08, delay = 2))
+    }
     
-    pp <- Bar(xmat, type = "Stacked", data.label.show = FALSE)
-    expect_true(TestWidget(pp, "legend-notdisabled-stacked-bar", mouse.doubleclick = TRUE,
-        mouse.xpos = 0.97, mouse.ypos = 0.08, delay = 2))
-    
-    pp <- Column(xmat, type = "Stacked", data.label.show = TRUE)
-    expect_true(TestWidget(pp, "legend-disabled-stacked-column", mouse.doubleclick = TRUE,
-        mouse.xpos = 0.97, mouse.ypos = 0.08, delay = 2))
-    
-    pp <- Column(xmat, type = "Stacked", data.label.show = FALSE)
-    expect_true(TestWidget(pp, "legend-notdisabled-stacked-column", mouse.doubleclick = TRUE,
-        mouse.xpos = 0.97, mouse.ypos = 0.08, delay = 2))
-    
-    # For Stacked Area, legend toggle should work with and without datalabels (DS-2497)
-    pp <- Area(xmat, type = "Stacked", data.label.show = TRUE)
-    expect_true(TestWidget(pp, "legend-notdisabled-stacked-area", mouse.doubleclick = TRUE,
-        mouse.xpos = 0.97, mouse.ypos = 0.08, delay = 2))
-    
-    pp <- Area(xmat, type = "Stacked", data.label.show = FALSE)
-    expect_true(TestWidget(pp, "legend-notdisabled-stacked-area-nodatalabels", mouse.doubleclick = TRUE,
-        mouse.xpos = 0.97, mouse.ypos = 0.08))
-
     # Check legend toggling works properly for unstacked charts
     for (chart in c("Area", "Bar", "Column", "Line", "Radar"))
     {
