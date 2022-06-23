@@ -1,7 +1,7 @@
 Package: flipChartTests
 Type: Package
 Title: Visual unit tests for flipChart and flipStandardCharts
-Version: 1.2.5
+Version: 1.2.6
 Author: Displayr <opensource@displayr.com>
 Maintainer: Displayr <opensource@displayr.com>
 Description: This package contains no code. It only used for testing.
@@ -15,12 +15,12 @@ Imports: htmlwidgets,
 Remotes:
     MangoTheCat/visualTest,
     rstudio/chromote,
-    Displayr/plotly,
+    plotly/plotly,
     Displayr/flipStandardCharts,
     Displayr/flipChart,
 Suggests:
     testthat,
     flipStandardCharts,
     flipChart
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Encoding: UTF-8

@@ -33,9 +33,11 @@ r_github_packages:
   - Displayr/flipDevTools
   - Displayr/flipStandardCharts
   - Displayr/flipChart
+  - plotly/plotly
 
 script:
   - R CMD build --no-manual --no-build-vignettes --no-resave-data .
+  - Rscript -e "packageVersion('plotly')"
   - R CMD check --as-cran --no-manual --no-build-vignettes --no-tests *.tar.gz
   - travis_wait 50 ./runTravisTests.sh
   # Prepare repository to push to github
