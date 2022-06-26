@@ -15,7 +15,7 @@ Imports: htmlwidgets,
 Remotes:
     MangoTheCat/visualTest,
     rstudio/chromote,
-    plotly/plotly,
+    Displayr/plotly@plotly-june2022,
     Displayr/flipStandardCharts,
     Displayr/flipChart,
 Suggests:
