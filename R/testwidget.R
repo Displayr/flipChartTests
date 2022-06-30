@@ -14,7 +14,7 @@
 #' @export
 TestWidget <- function(widget, 
                        name,
-                       delay = 2,
+                       delay = 0.2,
                        threshold = 0.001,
                        ...,
                        diff.path = "snapshots/diff",
