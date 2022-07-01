@@ -1,8 +1,9 @@
 language: r
 r:
   - devel
-dist: xenial
-addons: chrome
+dist: bionic
+addons: 
+  chrome: beta
 cache: packages
 warnings_are_errors: false
 latex: false
