@@ -14,13 +14,14 @@
 #'  Overrides \code{mouse.hover} and \code{mouse.click}.
 #' @param mouse.xpos Horizontal position of the mouse ranging from 0 (left) to 1 (right).
 #' @param mouse.ypos Vertical position of the mouse ranging from 0 (top) to 1 (bottom).
+#' @param debug Print debug message from snapshotting.
 #' @details Works with plotly and rhtmlLabeledScatter. Errors with rhtmlPictograph.
 #' @importFrom htmlwidgets saveWidget
 #' @import chromote
 #' @export
 CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 744,
                            mouse.hover = TRUE, mouse.click = FALSE, mouse.doubleclick = FALSE,
-                           mouse.xpos = 0.5, mouse.ypos = 0.5)
+                           mouse.xpos = 0.5, mouse.ypos = 0.5, debug = FALSE)
 {
     if (inherits(widget, "StandardChart"))
         widget <- widget$htmlwidget
@@ -36,9 +37,11 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
     saveWidget(widget, file = tmp.html, selfcontained = FALSE)
    
     b <- ChromoteSession$new(width = width, height = height)
-    b$parent$debug_messages(TRUE)
-    print(b$Browser$getVersion(wait_ = FALSE))
-    
+    if (debug)
+    {
+        b$parent$debug_messages(TRUE)
+        print(b$Browser$getVersion(wait_ = FALSE))
+    }    
     b$Page$navigate(paste0("file://", tmp.html))
     
     xpos <- mouse.xpos * width

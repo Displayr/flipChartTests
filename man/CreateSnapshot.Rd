@@ -14,7 +14,8 @@ CreateSnapshot(
   mouse.click = FALSE,
   mouse.doubleclick = FALSE,
   mouse.xpos = 0.5,
-  mouse.ypos = 0.5
+  mouse.ypos = 0.5,
+  debug = FALSE
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ Overrides \code{mouse.hover} and \code{mouse.click}.}
 \item{mouse.xpos}{Horizontal position of the mouse ranging from 0 (left) to 1 (right).}
 
 \item{mouse.ypos}{Vertical position of the mouse ranging from 0 (top) to 1 (bottom).}
+
+\item{debug}{Print debug message from snapshotting.}
 }
 \description{
 Converts a htmlwidget to png image file
