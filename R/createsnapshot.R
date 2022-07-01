@@ -37,6 +37,8 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
    
     b <- ChromoteSession$new(width = width, height = height)
     b$parent$debug_messages(TRUE)
+    print(b$Browser$getVersion(wait_ = FALSE))
+    
     b$Page$navigate(paste0("file://", tmp.html))
     
     xpos <- mouse.xpos * width
