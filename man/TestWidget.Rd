@@ -7,7 +7,7 @@
 TestWidget(
   widget,
   name,
-  delay = 0.2,
+  delay = 1,
   threshold = 0.001,
   ...,
   diff.path = "snapshots/diff",
