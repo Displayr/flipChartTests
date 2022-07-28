@@ -40,16 +40,16 @@ CreateSnapshot <- function(widget, filename, delay = 0.2, width = 992, height = 
     if (debug)
     {
         b$parent$debug_messages(TRUE)
-        print(b$Browser$getVersion(wait_ = FALSE))
+        print(b$Browser$getVersion())
     }    
     b$Page$navigate(paste0("file://", tmp.html))
+    b$Page$loadEventFired()
     
     xpos <- mouse.xpos * width
     ypos <- mouse.ypos * height
 
     if (mouse.click || mouse.doubleclick)
     {
-        b$Page$loadEventFired()
         b$Input$dispatchMouseEvent(type = "mousePressed", x = xpos, y = ypos, 
                                    button = "left", pointerType = "mouse", 
                                    clickCount = if (mouse.doubleclick) 2 else 1)    
