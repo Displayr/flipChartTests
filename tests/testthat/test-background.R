@@ -3,6 +3,7 @@ context("Chart backgrounds")
 # Here we are checking the behaviour of the plotly chart background and axis
 # Only checking charting functions supporting most of plotly chart axes options
 # Corresponding tests for Radar charts are in their own file
+library(flipStandardCharts)
 funcs <- c("Column", "Bar", "Area", "Line", "Scatter")
 
 test.args <- c('default' = '',
