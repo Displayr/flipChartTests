@@ -13,7 +13,7 @@ Imports: htmlwidgets,
          visualTest
 Remotes:
     MangoTheCat/visualTest,
-    rstudio/chromote@5b85d76,
+    rstudio/chromote,
     Displayr/flipStandardCharts,
     Displayr/flipChart,
 Suggests:
