@@ -76,7 +76,7 @@ jobs:
             git checkout -b temp
             git branch -f master temp
             git push origin master || true  #never report error code
-  	  
+
 
 workflows:
   build-and-check-R-package:
