@@ -32,7 +32,7 @@ jobs:
             libfribidi-dev libprotoc-dev libprotobuf-dev libv8-dev librsvg2-dev libmpfr-dev \
             libnlopt-dev libgdal-dev libproj-dev r-base r-cran-devtools r-cran-rcppeigen \
             ttf-ancient-fonts fonts-noto ttf-mscorefonts-installer fonts-noto-cjk \
-            xfonts-unifont ttf-unifont
+            xfonts-unifont fonts-unifont
             echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula \
             select true | sudo debconf-set-selections
             sudo fc-cache
