@@ -5,7 +5,7 @@ jobs:
   r-release:
     machine:
         image: ubuntu-2204:current
-    resource_class: large
+    resource_class: medium
 
     steps:
       - checkout
@@ -32,7 +32,7 @@ jobs:
             libfribidi-dev libprotoc-dev libprotobuf-dev libv8-dev librsvg2-dev libmpfr-dev \
             libnlopt-dev libgdal-dev libproj-dev r-base r-cran-devtools r-cran-rcppeigen \
             ttf-ancient-fonts fonts-noto ttf-mscorefonts-installer fonts-noto-cjk \
-            xfonts-unifont ttf-unifont
+            xfonts-unifont fonts-unifont
             echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula \
             select true | sudo debconf-set-selections
             sudo fc-cache
@@ -68,7 +68,7 @@ jobs:
           name: "Push new snapshots to GitHub"
           command: |
             git config user.name travisCISnapshots
-            git remote set-url origin "https://$WTOKEN@github.com/Displayr/flipChartTests.git"
+            git remote set-url origin "https://oauth2:$WTOKEN@github.com/Displayr/flipChartTests.git"
             git add tests/testthat/snapshots
             if [[ $(git status -s tests/testthat/snapshots) ]]; then git commit -m \
             "Snapshots added from Travis build $TRAVIS_BUILD_NUMBER [ci skip]"; fi
@@ -76,7 +76,7 @@ jobs:
             git checkout -b temp
             git branch -f master temp
             git push origin master || true  #never report error code
-  	  
+
 
 workflows:
   build-and-check-R-package:
