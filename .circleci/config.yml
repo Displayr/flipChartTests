@@ -53,10 +53,11 @@ jobs:
           name: "Check package"
           command: R -q -e 'rcmdcheck::rcmdcheck(args = c("--no-manual", "--ignore-vignettes", "--no-tests"), build_args = c("--no-build-vignettes"))'
 
+      # Don't fail build if tests fail so that snapshots are saved at later step
       - run:
           name: "Run unit tests"
           no_output_timeout: 80m
-          command: R -e 'q(status = flipDevTools::RunTestsOnCircleCI(), save = "no")'
+          command: R -e 'flipDevTools::RunTestsOnCircleCI()'
 
       - store_test_results:
           path: testthat.xml
@@ -71,7 +72,7 @@ jobs:
             git remote set-url origin "https://oauth2:$WTOKEN@github.com/Displayr/flipChartTests.git"
             git add tests/testthat/snapshots
             if [[ $(git status -s tests/testthat/snapshots) ]]; then git commit -m \
-            "Snapshots added from Travis build $TRAVIS_BUILD_NUMBER [ci skip]"; fi
+            "Snapshots added from CircleCI build $CIRCLE_BUILD_NUM [ci skip]"; fi
             # Reconnect repository to master branch - this must happen AFTER the commit
             git checkout -b temp
             git branch -f master temp
