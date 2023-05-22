@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  r-packages: displayr/r-packages@dev:5dbc0d6874d8e34ad0b311ff02ab4237c6eb5c4b
+  r-packages: displayr/r-packages@dev:168a84e7ecddf30b37be3205a433b00b79ae4d27
 parameters:
   trigger-message:
     type: string
@@ -43,3 +43,4 @@ workflows:
             - BuildAndCheckPackage
           context:
             - rviz_packages
+
