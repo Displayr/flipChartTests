@@ -9,6 +9,7 @@ License: GPL-3
 Depends: R (>= 2.10)
 LazyData: TRUE
 Imports: htmlwidgets,
+         flipStandardCharts (>= 1.30.11),
          chromote,
          visualTest
 Remotes:
@@ -18,7 +19,6 @@ Remotes:
     Displayr/flipChart,
 Suggests:
     testthat,
-    flipStandardCharts (>= 1.30.11),
     flipChart
 RoxygenNote: 7.2.3
 Encoding: UTF-8
