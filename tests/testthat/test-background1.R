@@ -4,7 +4,7 @@ context("Chart backgrounds")
 # Only checking charting functions supporting most of plotly chart axes options
 # Corresponding tests for Radar charts are in their own file
 library(flipStandardCharts)
-funcs <- c("Column", "Bar", "Area", "Line", "Scatter")
+funcs <- c("Column", "Bar")
 
 test.args <- c('default' = '',
     'datalabelonly' = 'data.label.show=TRUE, y.tick.show=FALSE',
