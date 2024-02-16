@@ -21,7 +21,6 @@ parameters:
   save-snapshots:
     type: boolean
     default: true
-
 workflows:
   build-and-check-R-package:
     jobs:
