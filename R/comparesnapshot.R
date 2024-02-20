@@ -36,7 +36,9 @@ CompareSnapshot <- function(widget,
         res <- isSimilar(file = diff.file, fingerprint = accepted.file, threshold = threshold)
         if (res)
             unlink(diff.file)
-        
+         else if (identical(Sys.getenv("CIRCLECI"), "true"))
+            file.copy(diff.file, accepted.file, overwrite = TRUE)
+
         return(res)
     }
 }
