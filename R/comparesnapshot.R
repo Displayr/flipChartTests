@@ -33,12 +33,12 @@ CompareSnapshot <- function(widget,
     else
     {
         CreateSnapshot(widget, filename = diff.file, delay = delay, ...)
-        res <- isSimilar(file = diff.file, fingerprint = accepted.file, threshold = threshold)
-        if (identical(Sys.getenv("CIRCLECI"), "true"))
+        diff.detected <- !isSimilar(file = diff.file, fingerprint = accepted.file, threshold = threshold)
+        if (diff.detected && identical(Sys.getenv("CIRCLECI"), "true"))
             file.copy(diff.file, accepted.file, overwrite = TRUE)
-        if (res || identical(Sys.getenv("CIRCLECI"), "true"))
+        if (!diff.detected || identical(Sys.getenv("CIRCLECI"), "true"))
             unlink(diff.file)
 
-        return(res)
+        return(!diff.detected)
     }
 }
