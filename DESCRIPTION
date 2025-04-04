@@ -8,17 +8,13 @@ Description: This package contains no code. It only used for testing.
 License: GPL-3
 Depends: R (>= 2.10)
 LazyData: TRUE
-Imports: htmlwidgets,
-         flipStandardCharts (>= 1.30.11),
-         chromote,
-         visualTest
+Imports: flipSnapshotTestUtils,
+         flipStandardCharts (>= 1.30.11)
 Remotes:
-    MangoTheCat/visualTest,
-    rstudio/chromote@5b85d76,
     Displayr/flipStandardCharts,
     Displayr/flipChart,
 Suggests:
     testthat,
     flipChart
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Encoding: UTF-8
